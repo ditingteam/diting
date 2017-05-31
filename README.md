@@ -23,7 +23,7 @@ a website
 
 - 安装新的包：选择解释器的页面点右面的+，然后搜索自己要的包
 
-- **运行方法**
+- **运行方法**<br/>
 </br>正常运行-> runserver
 </br>运行测试-> test
 </br>创建数据库 db init 创建迁移 db migrate -m "更新信息"  更新数据库 db upgrade
