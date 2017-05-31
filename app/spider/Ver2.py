@@ -6,8 +6,11 @@ class spider(object):
     def __init__(self, url):
         self.url=url
 
-    def prime_time(self):
-        ''' 黄金档'''
+    def prime_time(self, c):
+        '''
+        黄金档
+        :return: 
+        '''
         soup = self.get_soup()
         i = 0
         prime_time_dict = dict()
@@ -28,8 +31,12 @@ class spider(object):
             i=i+1
         print prime_time_list
 
+
     def online_teleplay(self):
-        '''超级网剧 '''
+        '''
+        超级网剧
+        :return: 
+        '''
         soup = soup = self.get_soup()
         i = 0
         online_teleplay_dict = dict()

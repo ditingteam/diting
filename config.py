@@ -27,7 +27,7 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-    'mysql+pymysql://root:yourpasswd@localhost:3306/flasky?charset=utf8'
+    'mysql+pymysql://root:yourpasswd@localhost:3306/diting?charset=utf8'
 
 
 config = {
