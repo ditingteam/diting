@@ -27,4 +27,4 @@ a website
 </br>正常运行-> runserver
 </br>运行测试-> test
 </br>创建数据库 db init 创建迁移 db migrate -m "更新信息"  更新数据库 db upgrade
-run->edit config... 在里面把这些命令打进去就好了
+</br>run->edit config... 在里面把这些命令打进去就好了
