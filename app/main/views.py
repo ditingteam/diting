@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime
 from flask import render_template, session, redirect, url_for
 from . import main
@@ -22,3 +23,7 @@ def json():
            { "firstName": "Sergei", "instrument": "piano" }   
           ]}'''
 
+@main.route('/')
+@main.route('/index')
+def index():
+    return render_template('index.html')
