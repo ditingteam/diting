@@ -26,4 +26,4 @@ def json():
 @main.route('/')
 @main.route('/index')
 def index():
-    return render_template('index.html')
+    return main.send_static_file('index.html')
