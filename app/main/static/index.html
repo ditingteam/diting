@@ -12,6 +12,7 @@
 
     <title>diting</title>
     <!-- 动态加载 -->
+    <!--
     <script >
         $(document).ready(function(){
             $.get("/json",function(data){
@@ -25,6 +26,19 @@
             });
         });
     </script>
+    -->
+    <script>
+        $(document).ready(function () {
+            var pictureArray=$("img.picture");
+            var nameArray = $("a.name");
+            var infoArray=$("a.information");
+
+            for(var i in nameArray){
+                nameArray[i].text="a";
+                infoArray[i].text="A";
+            }
+        })
+    </script>
 </head>
 
 <body>
@@ -33,75 +47,37 @@
           <div class="row">
             <div class="col-md-3">
               <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
-                <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
-                <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
-                <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
-                <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
                 </div>
               </div>
             </div>
@@ -109,37 +85,75 @@
           <div class="row">
             <div class="col-md-3">
               <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
                 </div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="thumbnail">
-                <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a href="播放链接" >剧名</a> </p>
-                  <p><a href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="thumbnail">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <div class="caption">
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="thumbnail">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <div class="caption">
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="thumbnail">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <div class="caption">
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="thumbnail">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <div class="caption">
+                  <p><a class="name" href="播放链接" >juming</a> </p>
+                  <p><a class="information" href="播放链接" >简介</a> </p>
                 </div>
               </div>
             </div>
