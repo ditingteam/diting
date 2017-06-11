@@ -7,37 +7,29 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <title>diting</title>
-    <!-- 动态加载 -->
-    <!--
+    <!-- 字符串转JSON -->
     <script >
         $(document).ready(function(){
-            $.get("/json",function(data){
-                try{
-                    var obj = JSON.parse(data)
+            $.get("/main_page_data",function(data){
+                var obj = JSON.parse(data)
+                var pictureArray=$("img.picture");
+                var nameArray = $("a.name");
+                var infoArray=$("a.information");
+                for(var i in nameArray){
+                    nameArray[i].text=obj.黄金档[i].title;
+                    infoArray[i].text=obj.黄金档[i].info;
+                    pictureArray[i].src=obj.黄金档[i].img;
                 }
-                catch(e){
-                    alert("err1")
-                }
-                document.getElementById("first").innerHTML=obj.programmers[0].firstName
             });
         });
-    </script>
-    -->
-    <script>
-        $(document).ready(function () {
-            var pictureArray=$("img.picture");
-            var nameArray = $("a.name");
-            var infoArray=$("a.information");
-
-            for(var i in nameArray){
-                nameArray[i].text="a";
-                infoArray[i].text="A";
-            }
-        })
     </script>
 </head>
 
@@ -49,8 +41,8 @@
               <div class="thumbnail">
                 <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
                 </div>
               </div>
             </div>
@@ -58,8 +50,8 @@
               <div class="thumbnail">
                 <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
                 </div>
               </div>
             </div>
@@ -67,8 +59,8 @@
               <div class="thumbnail">
                 <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
                 </div>
               </div>
             </div>
@@ -76,46 +68,8 @@
               <div class="thumbnail">
                 <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-              <div class="thumbnail">
-                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
-                <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="thumbnail">
-                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
-                <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="thumbnail">
-                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
-                <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="thumbnail">
-                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
-                <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
                 </div>
               </div>
             </div>
@@ -125,8 +79,8 @@
               <div class="thumbnail">
                 <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
                 </div>
               </div>
             </div>
@@ -134,8 +88,8 @@
               <div class="thumbnail">
                 <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
                 </div>
               </div>
             </div>
@@ -143,8 +97,8 @@
               <div class="thumbnail">
                 <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
                 </div>
               </div>
             </div>
@@ -152,8 +106,46 @@
               <div class="thumbnail">
                 <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
                 <div class="caption">
-                  <p><a class="name" href="播放链接" >juming</a> </p>
-                  <p><a class="information" href="播放链接" >简介</a> </p>
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="thumbnail">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <div class="caption">
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="thumbnail">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <div class="caption">
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="thumbnail">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <div class="caption">
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="thumbnail">
+                <img class="picture" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" alt="...">
+                <div class="caption">
+                  <p><a class="name" href="播放链接" target="_blank">juming</a> </p>
+                  <p><a class="information" href="播放链接" target="_blank">简介</a> </p>
                 </div>
               </div>
             </div>
@@ -165,7 +157,6 @@
       </div>
 
 
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>
