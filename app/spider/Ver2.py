@@ -1,8 +1,9 @@
 # coding=utf-8
-import requests
+import urllib2
+
+#import requests
 from bs4 import BeautifulSoup
 import json
-
 
 class spider(object):
     def prime_time(self):
@@ -80,9 +81,11 @@ class spider(object):
         return exclusive_planning_list
 
     def get_soup(self, url=u'http://tv.youku.com/'):
-        html = requests.get(url)  # 获取网页
-        html.encoding = 'utf-8'  # 中文编码
-        soup = BeautifulSoup(html.text, 'html.parser')  # 解析网页
+        response = urllib2.urlopen(url)
+#        html = requests.get(url)  # 获取网页
+        html = response.read()
+#        html.encoding = 'utf-8'  # 中文编码
+        soup = BeautifulSoup(html, 'html.parser')  # 解析网页
         return soup
 
     def search(self, key_word):
