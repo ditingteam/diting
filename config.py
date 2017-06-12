@@ -16,7 +16,7 @@ class Config(object):
 class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-    'mysql+pymysql://root:yourpasswd@localhost:3306/diting?charset=utf8'
+    'mysql+pymysql://root:admin@localhost:3306/diting?charset=utf8'
 
 
 class TestingConfig(Config):

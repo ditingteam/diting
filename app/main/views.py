@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from flask import render_template, session, redirect, url_for
+from app.models import HomePageData
+from app.databaseBack.homePageManagement import HomePageManagement
 
 from app.spider.Ver2 import spider
 from . import main
@@ -17,3 +19,7 @@ def main_page_data():
 @main.route('/index')
 def index():
     return main.send_static_file('index.html')
+
+@main.route('/BigStarXu')
+def nb():
+    return HomePageManagement().init_homepage()
