@@ -22,4 +22,6 @@ def index():
 
 @main.route('/BigStarXu')
 def nb():
-    return HomePageManagement().init_homepage()
+    # HomePageManagement.init_homepage()
+    HomePageManagement.upgrade()
+    return HomePageManagement().get_homepage()

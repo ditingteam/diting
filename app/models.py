@@ -30,15 +30,32 @@ class SuperDrama(db.Model):
         for juji in data:
             self.Sinfo = juji.get('info')
 
+class NewDramaTrailer(db.Model):
+    __tablename__ = 'new_drama_trailer'
+    Nid = db.Column(db.Integer)
+    id = db.Column(db.Integer, primary_key=True)
+    Ninfo = db.Column(db.String(64))
+    Nlink = db.Column(db.String(100))
+    Nimg = db.Column(db.String(100))
+    Ntitle = db.Column(db.String(50))
 
 class HotList(db.Model):
     __tablename__ = 'Hotlist'
     Hid = db.Column(db.Integer)
     id = db.Column(db.Integer, primary_key=True)
-    Hinfo = db.Column(db.String(64))
+    Hpaly_times = db.Column(db.String(64))
     Hlink = db.Column(db.String(100))
-    Himg = db.Column(db.String(100))
-    Htitle = db.Column(db.String(50))
+    Hlabel = db.Column(db.String(100))
+    Hname = db.Column(db.String(50))
+
+class ExclusiveVideoWebsite(db.Model):
+    __tablename__ = 'Exclusive_video_website'
+    Eid = db.Column(db.Integer)
+    id = db.Column(db.Integer, primary_key=True)
+    Einfo = db.Column(db.String(64))
+    Elink = db.Column(db.String(100))
+    Eimg = db.Column(db.String(100))
+    Etitle = db.Column(db.String(50))
 
 
 class ExclusivePlanning(db.Model):
