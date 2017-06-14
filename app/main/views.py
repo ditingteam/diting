@@ -12,16 +12,23 @@ import json
 
 @main.route('/main_page_data')
 def main_page_data():
-    my_spider = spider()
-    return json.dumps(my_spider.get_data(), ensure_ascii=False)
+    return HomePageManagement.get_homepage()
 
 @main.route('/')
 @main.route('/index')
 def index():
-    return main.send_static_file('index.html')
+    return main.send_static_file('main_page_before_login.html')
 
 @main.route('/BigStarXu')
 def nb():
     # HomePageManagement.init_homepage()
-    HomePageManagement.upgrade()
+    # HomePageManagement.upgrade()
     return HomePageManagement().get_homepage()
+
+@main.route('/init')
+def init():
+    HomePageManagement.init_homepage()
+
+@main.route('/upgrade')
+def upgrade():
+    HomePageManagement.upgrade()
