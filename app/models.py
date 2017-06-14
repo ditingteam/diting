@@ -40,7 +40,7 @@ class NewDramaTrailer(db.Model):
     Ntitle = db.Column(db.String(50))
 
 class HotList(db.Model):
-    __tablename__ = 'Hotlist'
+    __tablename__ = 'hotlist'
     Hid = db.Column(db.Integer)
     id = db.Column(db.Integer, primary_key=True)
     Hpaly_times = db.Column(db.String(64))
@@ -49,7 +49,7 @@ class HotList(db.Model):
     Hname = db.Column(db.String(50))
 
 class ExclusiveVideoWebsite(db.Model):
-    __tablename__ = 'Exclusive_video_website'
+    __tablename__ = 'exclusive_video_website'
     Eid = db.Column(db.Integer)
     id = db.Column(db.Integer, primary_key=True)
     Einfo = db.Column(db.String(64))
@@ -59,7 +59,7 @@ class ExclusiveVideoWebsite(db.Model):
 
 
 class ExclusivePlanning(db.Model):
-    __tablename__ = 'Exclusiveplanning'
+    __tablename__ = 'exclusiveplanning'
     Eid = db.Column(db.Integer)
     id = db.Column(db.Integer, primary_key=True)
     Einfo = db.Column(db.String(64))
