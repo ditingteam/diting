@@ -60,25 +60,47 @@ def register():
     password = request.form.get('mima')
     password1 = request.form.get('mima1')
     if password != password1:
-        print 'passwd f', password, password1
         return main.send_static_file('register.html')
     if UserManagement.has_user(username):
-        print 'user exist'
         return main.send_static_file('register.html')
     if UserManagement.register(username, password):
-        print 'registe!'
         print username, password
         return redirect(url_for('main.login'))
-    return 'ffffff'
 
 
 @main.route('/logout')
 @login_required
 def logout():
     logout_user()
+    print 'logout'
     return redirect(url_for('main.index'))
+
 
 @main.route('/information')
 @login_required
 def information():
-    main.send_static_file('information.html')
+    return main.send_static_file('information.html')
+
+
+@login_required
+@main.route('/change_password', methods=['POST', 'GET'])
+def change_password():
+    if request.method == 'GET':
+        return main.send_static_file('change_passwd.html')
+    username = current_user.username
+    old_password = request.form.get('old_password')
+    new_password = request.form.get('new_password')
+    new_password1 = request.form.get('new_password1')
+    if new_password != new_password1:
+        return main.send_static_file('change_passwd.html')
+    elif UserManagement.change_password(current_user.username, old_password, new_password):
+        return redirect(url_for('main.information'))
+    else:
+        return main.send_static_file('change_passwd.html')
+
+
+@login_required
+@main.route('/compile_information', methods=['POST', 'GET'])
+def compile_information():
+    if request.method == 'GET':
+        return main.send_static_file('compile_information.html')
