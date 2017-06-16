@@ -16,35 +16,41 @@
       <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
-<script >
-        $(document).ready(function(){
-            $.get("/main_page_data",function(data){
-                var obj = JSON.parse(data);
-                //黄金档加载
-                var picture1Array=$("img.picture1");
-                var name1Array = $("a.name1");
-                var info1Array=$("a.information1");
-                for(var i in name1Array){
-                    name1Array[i].text=obj.黄金档[i].title;
-                    info1Array[i].text=obj.黄金档[i].info;
-                    picture1Array[i].src=obj.黄金档[i].img;
-                }
-                //热剧榜单加载
+        <script type="text/javascript" language="javascript">
+            $(document).ready(function(){
+                $.get("/main_page_data",function(data){
+                    try{
+                        var obj = JSON.parse(data);
+                        alert(obj)
+                    }catch (e){
+                        alert("ERR1")
+                    }
+
+                 //黄金档加载
+                    var picture1Array=$("img.picture1");
+                    var name1Array = $("a.name1");
+                    var info1Array=$("a.information1");
+                    for(var i in name1Array){
+                        name1Array[i].text=obj.黄金档[i].title;
+                        info1Array[i].text=obj.黄金档[i].info;
+                        picture1Array[i].src=obj.黄金档[i].img;
+                    }
+/*                //热剧榜单加载
                 var name2Array=$("a.name2");
                 for(var i in name1Array){
-                    name1Array[i].text=obj.热剧榜单[i].title;
+                    name2Array[i].text=obj.热剧榜单[i].title
                 }
                 //独家视频官网加载
-                var picture5Array=$("img.picture5");
-                var name5Array = $("a.name5");
-                var info5Array=$("a.information5");
+                var picture5Array=$("img.picture5")
+                var name5Array = $("a.name5")
+                var info5Array=$("a.information5")
                 for(var i in name5Array){
                     name5Array[i].text=obj.独家视频[i].title;
                     info5Array[i].text=obj.独家视频[i].info;
                     picture5Array[i].src=obj.独家视频[i].img;
-                }
+                }*/
+                });
             });
-        });
     </script>
     </head>
     <body>
@@ -253,7 +259,7 @@
         <div class="col-lg-4">
           <p><h2>热剧榜单</h2></p>
           <p><h3><span class="label label-success">1</span><a class="name2" href="播放链接">剧名 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;播放量</a></h3></p>
-          <p><h3><span class="label label-success">2</span><a class="name2" a href="播放链接">剧名 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;播放量</a></h3></p>
+          <p><h3><span class="label label-success">2</span><a class="name2" href="播放链接">剧名 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;播放量</a></h3></p>
           <p><h3><span class="label label-success">3</span><a class="name2" href="播放链接">剧名 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;播放量</a></h3></p>
           <p><h3><span class="label label-success">4</span><a class="name2" href="播放链接">剧名 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;播放量</a></h3></p>
           <p><h3><span class="label label-success">5</span><a class="name2" href="播放链接">剧名 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;播放量</a></h3></p>
