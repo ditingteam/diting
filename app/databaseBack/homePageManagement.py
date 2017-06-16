@@ -90,7 +90,7 @@ class HomePageManagement(object):
         hot_list_list=[]
         for hot_list_data in  hot_list_all_data:
             hot_list_dict = {}
-            hot_list_dict['paly_times'] = hot_list_data.Hpaly_times
+            hot_list_dict['play_times'] = hot_list_data.Hpaly_times
             hot_list_dict['link'] = hot_list_data.Hlink
             hot_list_dict['name'] = hot_list_data.Hname
             hot_list_dict['label'] = hot_list_data.Hlabel
