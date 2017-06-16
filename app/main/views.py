@@ -21,7 +21,7 @@ def index():
         print request.args.get('sousuo')
         return main.send_static_file('serch_result.html')
     else:
-        return main.send_static_file('main_page_before_login.html')
+        return main.send_static_file('index.html')
 
 @main.route('/BigStarXu')
 def nb():
