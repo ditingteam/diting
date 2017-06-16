@@ -1,8 +1,18 @@
 # -*- coding: utf-8 -*-
-from app import db
 from flask_login import UserMixin
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from app import db, login_manager
 from app.spider.Ver2 import spider
 from datetime import *
+
+
+# Flask-Login 要求程序实现一个回调函数
+# 加载用户的回调函数接收以Unicode 字符串形式表示的用户标识符。如果能找到用户，这
+# 个函数必须返回用户对象；否则应该返回None。
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -10,7 +20,26 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(64),unique = True, index = True)
     username = db.Column(db.String(64), unique = True)
     password_hash = db.Column(db.String(128))
-    confirmed = db.Column(db.Boolean, default = False)
+    sex = db.Column(db.Boolean)
+    birth = db.Column(db.String(20))
+    tel = db.Column(db.String(11))
+    place = db.Column(db.String(200))
+    introduce = db.Column(db.String(200))
+    register_time = db.Column(db.DateTime, default=datetime.now())
+    role = db.Column(db.String(1))
+
+    @property
+    # 只可以写，写的方法在下面，如果试图读，会返回错误
+    # 这个修饰器可以简单地将方法转换为类属性，可以用.来访问的那种
+    def password(self):
+        raise AttributeError('password is not a readable attribute')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 class SuperDrama(db.Model):
     __tablename__ = 'super_drama'
