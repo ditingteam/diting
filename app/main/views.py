@@ -36,3 +36,13 @@ def init():
 @main.route('/upgrade')
 def upgrade():
     HomePageManagement.upgrade()
+
+@main.route('/login', methods=['GET', 'POST'])
+def login():
+    print request.form.get('mima')
+    return main.send_static_file('login.html')
+
+@main.route('/register', methods=['GET', 'POST'])
+def register():
+    print request.form
+    return main.send_static_file('register.html')
