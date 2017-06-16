@@ -41,6 +41,11 @@ class User(UserMixin, db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def reset_password(self, new_password):
+        self.password = new_password
+        db.session.add(self)
+        db.session.commit()
+
 class SuperDrama(db.Model):
     __tablename__ = 'super_drama'
     Sid = db.Column(db.Integer)

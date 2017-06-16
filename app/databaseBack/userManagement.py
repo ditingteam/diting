@@ -43,3 +43,14 @@ class UserManagement(object):
     @staticmethod
     def get_user(username):
         return User.query.filter_by(username=username).first()
+
+    @staticmethod
+    def change_password(username, old_password, password):
+        user = UserManagement.get_user(username)
+        if user.verify_password(old_password):
+            user.reset_password(password)
+            return True
+        else:
+            return False
+
+
