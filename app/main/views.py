@@ -19,9 +19,9 @@ def main_page_data():
 def index():
     if request.args.get('sousuo')  is not None:
         print request.args.get('sousuo')
-        return main.send_static_file('serch_result.html')
+        return main.send_static_file('search_result.html')
     else:
-        return main.send_static_file('index.html')
+        return main.send_static_file('main_page_before_login.html')
 
 @main.route('/BigStarXu')
 def nb():
