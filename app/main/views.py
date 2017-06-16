@@ -3,6 +3,8 @@ from datetime import datetime
 from flask import render_template, session, redirect, url_for, request
 from app.models import HomePageData
 from app.databaseBack.homePageManagement import HomePageManagement
+from app.databaseBack.userManagement import UserManagement
+from flask_login import login_user, logout_user, current_user
 
 from app.spider.Ver2 import spider
 from . import main
@@ -39,10 +41,32 @@ def upgrade():
 
 @main.route('/login', methods=['GET', 'POST'])
 def login():
-    print request.form.get('mima')
-    return main.send_static_file('login.html')
+    if request.method == 'GET':
+        return main.send_static_file('login.html')
+    username = request.form.get('yonghuming')
+    password = request.form.get('mima')
+
+    user = UserManagement.login(username, password)
+    if user is not None:
+        login_user(user, request.form.get('rememberMe'))
+        print current_user.username
+        return redirect(request.args.get('next') or url_for('main.index'))
+    return redirect(url_for('main.login'))
+
 
 @main.route('/register', methods=['GET', 'POST'])
 def register():
-    print request.form
-    return main.send_static_file('register.html')
+    username = request.form.get('yonghuming')
+    password = request.form.get('mima')
+    password1 = request.form.get('mima1')
+    if password != password1:
+        print 'passwd f', password, password1
+        return main.send_static_file('register.html')
+    if UserManagement.has_user(username):
+        print 'user exist'
+        return main.send_static_file('register.html')
+    if UserManagement.register(username, password):
+        print 'registe!'
+        print username, password
+        return redirect(url_for('main.login'))
+    return 'ffffff'

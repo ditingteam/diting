@@ -4,7 +4,7 @@ from app.models import User
 class UserManagement(object):
     @staticmethod
     def has_user(username):
-        user = User.query.filter_by(username=username)
+        user = User.query.filter_by(username=username).first()
         return True if user is not None else False
 
     @staticmethod
@@ -31,7 +31,7 @@ class UserManagement(object):
         :param password:
         :return: user or None
         '''
-        user = User.query.filter_by(username=username)
+        user = UserManagement.get_user(username)
         if user is not None:
             if user.verify_password(password):
                 return user
@@ -39,3 +39,7 @@ class UserManagement(object):
                 return None
         else:
             return None
+
+    @staticmethod
+    def get_user(username):
+        return User.query.filter_by(username=username).first()
