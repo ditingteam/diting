@@ -99,7 +99,7 @@ class HomePageManagement(object):
         exclusive_planning_list=[]
         for exclusive_planning_data in  exclusive_planning_all_data:
             exclusive_planning_dict = {}
-            exclusive_planning_dict['info'] = exclusive_planning_data.Etitle
+            exclusive_planning_dict['info'] = exclusive_planning_data.Einfo
             exclusive_planning_dict['link'] = exclusive_planning_data.Elink
             exclusive_planning_dict['img'] = exclusive_planning_data.Eimg
             exclusive_planning_dict['title'] = exclusive_planning_data.Etitle
@@ -108,7 +108,7 @@ class HomePageManagement(object):
         peak_viewing_time_list=[]
         for peak_viewing_time_data in  peak_viewing_time_all_data:
             peak_viewing_time_dict = {}
-            peak_viewing_time_dict['info'] = peak_viewing_time_data.Ptitle
+            peak_viewing_time_dict['info'] = peak_viewing_time_data.Pinfo
             peak_viewing_time_dict['link'] = peak_viewing_time_data.Plink
             peak_viewing_time_dict['img'] = peak_viewing_time_data.Pimg
             peak_viewing_time_dict['title'] = peak_viewing_time_data.Ptitle
