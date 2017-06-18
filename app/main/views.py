@@ -20,6 +20,7 @@ def main_page_data():
 @main.route('/')
 @main.route('/index', methods=['GET', 'POST'])
 def index():
+
     if request.args.get('sousuo')  is not None:
         video_name = request.args.get('sousuo')
         session['video_name'] = video_name

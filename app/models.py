@@ -14,11 +14,12 @@ from datetime import *
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key = True)
-    email = db.Column(db.String(64),unique = True, index = True)
-    username = db.Column(db.String(64), unique = True)
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(64), unique=True, index=True)
+    username = db.Column(db.String(64), unique=True)
     password_hash = db.Column(db.String(128))
     sex = db.Column(db.Boolean)
     birth = db.Column(db.String(20))
@@ -46,6 +47,7 @@ class User(UserMixin, db.Model):
         db.session.add(self)
         db.session.commit()
 
+
 class SuperDrama(db.Model):
     __tablename__ = 'super_drama'
     Sid = db.Column(db.Integer)
@@ -57,12 +59,12 @@ class SuperDrama(db.Model):
     Stime = db.Column(db.DateTime, default=datetime.now())
 
     def update_data(self):
-
         my_spider = spider()
         all_data = my_spider.get_data()
         data = all_data.get(u'超级网剧')
         for juji in data:
             self.Sinfo = juji.get('info')
+
 
 class NewDramaTrailer(db.Model):
     __tablename__ = 'new_drama_trailer'
@@ -73,6 +75,7 @@ class NewDramaTrailer(db.Model):
     Nimg = db.Column(db.String(100))
     Ntitle = db.Column(db.String(50))
 
+
 class HotList(db.Model):
     __tablename__ = 'hotlist'
     Hid = db.Column(db.Integer)
@@ -81,6 +84,7 @@ class HotList(db.Model):
     Hlink = db.Column(db.String(100))
     Hlabel = db.Column(db.String(100))
     Hname = db.Column(db.String(50))
+
 
 class ExclusiveVideoWebsite(db.Model):
     __tablename__ = 'exclusive_video_website'

@@ -217,6 +217,9 @@ if __name__ == '__main__':
    # print json.dumps(a.get_data(), ensure_ascii=False)
     key = u'楚乔传'
     #a.search(key.decode('utf-8'))
+    #print json.dumps(a.search(key.decode('utf-8')), ensure_ascii=False)
+    print(a.exclusive_planning())
     data = a.search(key)
     print len(data[0].get('links'))
     print json.dumps(data, ensure_ascii=False)
+
