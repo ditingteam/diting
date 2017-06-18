@@ -21,11 +21,7 @@ def main_page_data():
 @main.route('/index', methods=['GET', 'POST'])
 def index():
 
-    if request.args.get('sousuo')  is not None:
-        video_name = request.args.get('sousuo')
-        session['video_name'] = video_name
-        return main.send_static_file('search_result_after_login.html')
-    elif current_user.is_authenticated:
+    if current_user.is_authenticated:
         return main.send_static_file('home_page_after_login.html')
     else:
         return main.send_static_file('main_page_before_login.html')
@@ -51,13 +47,14 @@ def login():
     user = UserManagement.login(username, password)
     if user is not None:
         login_user(user, request.form.get('rememberMe'))
-        print current_user.username
         return redirect(request.args.get('next') or url_for('main.index'))
     return redirect(url_for('main.login'))
 
 
 @main.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == 'GET':
+        return main.send_static_file('register.html')
     username = request.form.get('yonghuming')
     password = request.form.get('mima')
     password1 = request.form.get('mima1')
@@ -74,7 +71,6 @@ def register():
 @login_required
 def logout():
     logout_user()
-    print 'logout'
     return redirect(url_for('main.index'))
 
 
@@ -112,3 +108,13 @@ def compile_information():
 def search_data():
     video_name = session.get('video_name')
     return VideoManagement.search_video(video_name)
+
+@main.route('/search')
+def search():
+    if request.args.get('sousuo')  is not None:
+        video_name = request.args.get('sousuo')
+        session['video_name'] = video_name
+    if current_user.is_authenticated:
+        return main.send_static_file('search.html')
+    else:
+        return main.send_static_file('search.html')
