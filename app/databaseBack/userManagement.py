@@ -1,15 +1,18 @@
 from app import db
-from app.models import User
+from app.models import User, History
+from app.databaseBack.videoManagement import VideoManagement
+from datetime import *
+
 
 
 class UserManagement(object):
-    @staticmethod
-    def has_user(username):
-        user = User.query.filter_by(username=username).first()
+    @classmethod
+    def has_user(cls, username):
+        user = UserManagement.get_user(username)
         return True if user is not None else False
 
-    @staticmethod
-    def register(username, password):
+    @classmethod
+    def register(cls, username, password):
         '''
         only when the user exist return false
         :param username:
@@ -24,8 +27,8 @@ class UserManagement(object):
         else:
             return False
 
-    @staticmethod
-    def login(username, password):
+    @classmethod
+    def login(cls, username, password):
         '''
 
         :param username:
@@ -41,15 +44,31 @@ class UserManagement(object):
         else:
             return None
 
-    @staticmethod
-    def get_user(username):
+    @classmethod
+    def get_user(cls, username):
         return User.query.filter_by(username=username).first()
 
-    @staticmethod
-    def change_password(username, old_password, password):
+    @classmethod
+    def change_password(cls, username, old_password, password):
         user = UserManagement.get_user(username)
         if user.verify_password(old_password):
             user.reset_password(password)
             return True
         else:
             return False
+
+    @classmethod
+    def get_user_id(cls, username):
+        return UserManagement.get_user_id(username)
+
+    @classmethod
+    def change_information(cls):
+        # todo change information
+        pass
+
+
+
+
+
+
+
