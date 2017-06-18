@@ -20,7 +20,7 @@ def main_page_data():
 @main.route('/')
 @main.route('/index', methods=['GET', 'POST'])
 def index():
-    if request.args.get('sousuo')  is not None:
+    if request.args.get('sousuo') is not None:
         print request.args.get('sousuo')
         return main.send_static_file('search_result.html')
     elif current_user.is_authenticated:

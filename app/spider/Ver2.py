@@ -208,4 +208,4 @@ if __name__ == '__main__':
     #key = raw_input()
     #a.search(key.decode('utf-8'))
     #print json.dumps(a.search(key.decode('utf-8')), ensure_ascii=False)
-    a.Posters()
+    print(a.exclusive_planning())

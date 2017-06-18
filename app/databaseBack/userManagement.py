@@ -1,6 +1,7 @@
 from app import db
 from app.models import User
 
+
 class UserManagement(object):
     @staticmethod
     def has_user(username):
@@ -16,7 +17,7 @@ class UserManagement(object):
         :return:
         '''
         if not UserManagement.has_user(username):
-            user = User(username =username, password=password)
+            user = User(username=username, password=password)
             db.session.add(user)
             db.session.commit()
             return True
@@ -52,5 +53,3 @@ class UserManagement(object):
             return True
         else:
             return False
-
-
