@@ -53,6 +53,8 @@ def login():
 
 @main.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == 'GET':
+        return main.send_static_file('register.html')
     username = request.form.get('yonghuming')
     password = request.form.get('mima')
     password1 = request.form.get('mima1')
