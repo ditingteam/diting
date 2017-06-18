@@ -24,7 +24,7 @@ def index():
     if request.args.get('sousuo')  is not None:
         video_name = request.args.get('sousuo')
         session['video_name'] = video_name
-        return main.send_static_file('search_result.html')
+        return main.send_static_file('search_result_after_login.html')
     elif current_user.is_authenticated:
         return main.send_static_file('home_page_after_login.html')
     else:
@@ -106,6 +106,7 @@ def change_password():
 def compile_information():
     if request.method == 'GET':
         return main.send_static_file('compile_information.html')
+
 
 @main.route('/search_data')
 def search_data():
