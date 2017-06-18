@@ -1,164 +1,126 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>个人信息</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <title>完善个人信息</title>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
             <!-- The mobile navbar-toggle button can be safely removed since you do not need it in a non-responsive implementation -->
-            <a class="navbar-brand" href="/index">谛听视频网站</a>
-        </div>
-        <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
-        <div id="navbar">
+            <a class="navbar-brand" href="#">谛听视频网站</a>
+          </div>
+          <!-- Note that the .navbar-collapse and .collapse classes have been removed from the #navbar -->
+          <div id="navbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/index">主页</a></li>
+              <li class="active"><a href="#">主页</a></li>
             </ul>
             <form class="navbar-form navbar-left ">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="sousuo" placeholder="楚乔传">
-                </div>
-                <button type="submit" class="btn btn-default">搜索</button>
+              <div class="form-group">
+                <input type="text" class="form-control" name="sousuo" placeholder="楚乔传">
+              </div>
+              <button type="submit" class="btn btn-default" action="/search">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/information">个人信息</a></li>
-                <li><a href="/logout">退出</a></li>
+              <li><a href="#">个人信息</a></li>
+              <li><a href="#">退出</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
-<div><h1>&nbsp;</h1></div>
-<div class="row">
-    <div class="container theme-showcase" role="main">
-        <div class="jumbotron">
-            <div class="row">
-                <div class="col-lg-4">
-                    <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg"
-                         alt="Generic placeholder image" width="140" height="140">
-                    <h2>你好,请编辑</h2>
-                    <p>
-                    <h3>属于你的温馨小窝</h3></p>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <!--todo change many-->
-                    <p>
-                    <h4>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">昵称</label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3" name="nicheng"
-                                       placeholder="昵称">
-                            </div>
-                        </div>
-                    </h4>
-                    </p>
-                    <div><h6>&nbsp;</h6></div>
-                    <p>
-                    <h4>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">性别</label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3" name="xingbie"
-                                       placeholder="用户名">
-                            </div>
-                        </div>
-                    </h4>
-                    </p>
-                    <div><h6>&nbsp;</h6></div>
-                    <p>
-                    <h4>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-4 control-label">个性签名</label>
-                            <div class="col-sm-8">
-                                <input type="email" class="form-control" id="inputEmail3" name="gexingqianming"
-                                       placeholder="个性标语">
-                            </div>
-                        </div>
-                    </h4>
-                    </p>
-                    <div><h6>&nbsp;</h6></div>
-                    <p>
-                    <h4>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">生日</label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3" name="shengri"
-                                       placeholder="生日会有礼物哦">
-                            </div>
-                        </div>
-                    </h4>
-                    </p>
-                    <div><h6>&nbsp;</h6></div>
-                    <p>
-                    <h4>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">电话</label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3" name="dianhua"
-                                       placeholder="常用的">
-                            </div>
-                        </div>
-                    </h4>
-                    </p>
-                    <div><h6>&nbsp;</h6></div>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <p>
-                    <h4>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3" name="email"
-                                       placeholder="常用邮箱">
-                            </div>
-                        </div>
-                    </h4>
-                    </p>
-                    <div><h6>&nbsp;</h6></div>
-                    <p>
-                    <h4>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-4 control-label">所在地</label>
-                            <div class="col-sm-8">
-                                <input type="email" class="form-control" id="inputEmail3" name="suozaidi"
-                                       placeholder="住址">
-                            </div>
-                        </div>
-                    </h4>
-                    </p>
-                    <div><h6>&nbsp;</h6></div>
-                    <p>
-                    <h4>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-4 control-label">个人简介</label>
-                            <div class="col-sm-8">
-                                <input type="email" class="form-control" id="inputEmail3" name="gerenjianjie"
-                                       placeholder="吸引异性吧!">
-                            </div>
-                        </div>
-                    </h4>
-                    </p>
-                    <div><h6>&nbsp;</h6></div>
-                    <div class="page-header">
-                        <p><a href="...">
-                            <button type="button" class="btn btn-lg btn-default">完成</button>
-                        </a></p>
-                    </div>
-                </div><!-- /.col-lg-4 -->
-            </div>
+          </div><!--/.nav-collapse -->
         </div>
+      </nav>
+      <div><h1>&nbsp;</h1></div>
+      <div class="row">
+  <div class="container theme-showcase" role="main">
+      <div class="jumbotron">
+        <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" alt="Generic placeholder image" width="140" height="140">
+          <h2>您好,请编辑</h2>
+          <p><h3>属于你的温馨小窝</h3></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <form class="form-horizontal">
+  <div class="form-group">
+    <p><h4><label for="inputEmail3" class="col-sm-3 control-label">昵称</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputEmail3" name="nicheng" placeholder="昵称">
     </div>
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-</div>
-</body>
+    </h4></p>
+  </div>
+  <div class="form-group">
+    <p><h4><label for="inputEmail3" class="col-sm-3 control-label">性别</label>
+    <div class="col-sm-9">
+        <input type="radio" name="sex" value="">男
+        <input type="radio" name="sex" value="">女
+
+    </div>
+    </h4></p>
+  </div>
+  <div class="form-group">
+    <p><h4><label for="inputEmail3" class="col-sm-4 control-label">个性签名</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="inputEmail3" name="geqian" placeholder="我的标签">
+    </div>
+    </h4></p>
+  </div>
+  <div class="form-group">
+    <p><h4><label for="inputEmail3" class="col-sm-3 control-label">生日</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputEmail3" name="shengri" placeholder="会有生日礼物哦！">
+    </div>
+    </h4></p>
+  </div>
+  <div class="form-group">
+    <p><h4><label for="inputEmail3" class="col-sm-3 control-label">电话</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputEmail3" name="dianhua" placeholder="常用电话">
+    </div>
+    </h4></p>
+  </div>
+</form>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+<form class="form-horizontal">
+<div class="form-group">
+    <p><h4><label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputEmail3" name="email" placeholder="常用邮箱">
+    </div>
+    </h4></p>
+  </div><div class="form-group">
+    <p><h4><label for="inputEmail3" class="col-sm-3 control-label">所在地</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputEmail3" name="dizhi" placeholder="住址">
+    </div>
+    </h4></p>
+  </div><div class="form-group">
+    <p><h4><label for="inputEmail3" class="col-sm-4 control-label">个人简介</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="inputEmail3" name="jianjie" placeholder="描述自己，吸引异性吧！">
+    </div>
+    </h4></p>
+  </div>
+  <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
+  <div class="form-group">
+  <h1><button type="submit" class="btn btn-default"><h4>完成</h4></button></h1>
+  </div>
+  </div>
+</form>
+        </div><!-- /.col-lg-4 -->
+        </div>
+      </div>
+      </div>
+
+  </body>
 </html>
