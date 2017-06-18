@@ -35,8 +35,40 @@
                 }
                 //热剧榜单加载
                 var name2Array = $("a.name2")
+                var play_timesArray = $("a.play_times")
                 for (var i=0;i<name2Array.length;i++) {
                     name2Array[i].text = temp_json.热剧榜单[i].name
+                    play_timesArray[i].text=temp_json.热剧榜单[i].play_times
+                }
+                //超级网剧加载
+                var picture3Array = $("img.picture3")
+                var name3Array = $("a.name3")
+                var info3Array = $("a.information3")
+                for (var i=0;i<name3Array.length;i++) {
+                    name3Array[i].text = temp_json.超级网剧[i].title;
+                    info3Array[i].text = temp_json.超级网剧[i].info;
+                    picture3Array[i].src = temp_json.超级网剧[i].img;
+                }
+                //独家策划加载
+                var picture4Array = $("img.picture4")
+                var name4Array = $("a.name4")
+                var info4Array = $("a.information4")
+                for (var i=0;i<name4Array.length;i++) {
+                    name4Array[i].text = temp_json.独家策划[i].title;
+                    info4Array[i].text = temp_json.独家策划[i].info;
+                    picture4Array[i].src = temp_json.独家策划[i].img;
+                }
+                var name4_1Array=$("a.name4_1")
+                for(var i=0;i<name4_1Array.length;i++)
+                    name4_1Array[i].text=temp_json.独家策划[i+6].title
+                //独家视频官网加载
+                var picture5Array = $("img.picture5")
+                var name5Array = $("a.name5")
+                var info5Array = $("a.information5")
+                for (var i=0;i<name5Array.length;i++) {
+                    name5Array[i].text = temp_json.独家视频官网[i].title
+                    info5Array[i].text = temp_json.独家视频官网[i].info
+                    picture5Array[i].src = temp_json.独家视频官网[i].img
                 }
             });
         });
@@ -247,17 +279,63 @@
         </div>
         <div class="col-lg-4">
           <p><h2>热剧榜单</h2></p>
-          <p><h3><span class="label label-success">1</span><a class="name2" href="播放链接">/a></h3></p>
-          <p><h3><span class="label label-success">2</span><a class="name2" href="播放链接"></a></h3></p>
-          <p><h3><span class="label label-success">3</span><a class="name2" href="播放链接"></a></h3></p>
-          <p><h3><span class="label label-success">4</span><a class="name2" href="播放链接"></a></h3></p>
-          <p><h3><span class="label label-success">5</span><a class="name2" href="播放链接"></a></h3></p>
-          <p><h3><span class="label label-success">6</span><a class="name2" href="播放链接"></a></h3></p>
-          <p><h3><span class="label label-success">7</span><a class="name2" href="播放链接"></a></h3></p>
-          <p><h3><span class="label label-success">8</span><a class="name2" href="播放链接"></a></h3></p>
-          <p><h3><span class="label label-success">9</span><a class="name2" href="播放链接"></a></h3></p>
-          <p><h3><span class="label label-success">10</span><a class="name2" href="播放链接"></a></h3></p>
-          <p><h3><span class="label label-success">11</span><a class="name2" href="播放链接"></a></h3></p>
+          <table  width="450">
+            <tr>
+                <td><h3><span class="label label-success">1</span></h3></td>
+                <td><h3><a class="name2" href="播放链接"></a></h3></td>
+                <td ><h3><a class="play_times"></a></h3></td>
+            </tr>
+              <tr>
+                <td><h3><span class="label label-success">2</span></h3></td>
+                <td><h3><a class="name2" href="播放链接">jian</a></h3></td>
+                <td><h3><a class="play_times"></a></h3></td>
+            </tr>
+              <tr>
+                <td><h3><span class="label label-success">3</span></h3></td>
+                <td><h3><a class="name2" href="播放链接">jian</a></h3></td>
+                <td><h3><a class="play_times"></a></h3></td>
+            </tr>
+              <tr>
+                <td><h3><span class="label label-success">4</span></h3></td>
+                <td><h3><a class="name2" href="播放链接">jian</a></h3></td>
+                <td><h3><a class="play_times"></a></h3></td>
+            </tr>
+              <tr>
+                <td><h3><span class="label label-success">5</span></h3></td>
+                <td><h3><a class="name2" href="播放链接">jian</a></h3></td>
+                <td><h3><a class="play_times"></a></h3></td>
+            </tr>
+              <tr>
+                <td><h3><span class="label label-success">6</span></h3></td>
+                <td><h3><a class="name2" href="播放链接">jian</a></h3></td>
+                <td><h3><a class="play_times"></a></h3></td>
+            </tr>
+              <tr>
+                <td><h3><span class="label label-success">7</span></h3></td>
+                <td><h3><a class="name2" href="播放链接">jian</a></h3></td>
+                <td><h3><a class="play_times"></a></h3></td>
+            </tr>
+              <tr>
+                <td><h3><span class="label label-success">8</span></h3></td>
+                <td><h3><a class="name2" href="播放链接">jian</a></h3></td>
+                <td><h3><a class="play_times"></a></h3></td>
+            </tr>
+              <tr>
+                <td><h3><span class="label label-success">9</span></h3></td>
+                <td><h3><a class="name2" href="播放链接">jian</a></h3></td>
+                <td><h3><a class="play_times"></a></h3></td>
+            </tr>
+              <tr>
+                <td><h3><span class="label label-success">10</span></h3></td>
+                <td><h3><a class="name2" href="播放链接">jian</a></h3></td>
+                <td><h3><a class="play_times"></a></h3></td>
+            </tr>
+              <tr>
+                <td><h3><span class="label label-success">11</span></h3></td>
+                <td><h3><a class="name2" href="播放链接">jian</a></h3></td>
+                <td><h3><a class="play_times"></a></h3></td>
+            </tr>
+          </table>
         </div>
       </div>
         <div class="row">
@@ -267,10 +345,10 @@
             <div class="col-md-6">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http:////r1.ykimg.com/050C0000592E2FF5ADC0B006C401820E" >
+                  <img class="picture3" src="http:////r1.ykimg.com/050C0000592E2FF5ADC0B006C401820E" >
                   <div class="caption">
-                    <p><a href="播放链接" >剧名</a> </p>
-                    <p><a href="播放链接" >简介</a> </p>
+                    <p><a class="name3" href="播放链接" >剧名</a> </p>
+                    <p><a class="information3" href="播放链接" >简介</a> </p>
                   </div>
                 </div>
               </a>
@@ -282,10 +360,10 @@
                     <div class="col-sm-6">
                       <a href="播放链接">
                         <div class="thumbnail">
-                          <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
-                          <div class="caption">
-                            <p><a href="播放链接" >剧名</a> </p>
-                            <p><a href="播放链接" >简介</a> </p>
+                          <img class="picture3" src="http:////r1.ykimg.com/050C0000592E2FF5ADC0B006C401820E" >
+                  <div class="caption">
+                    <p><a class="name3" href="播放链接" >剧名</a> </p>
+                    <p><a class="information3" href="播放链接" >简介</a> </p>
                           </div>
                         </div>
                       </a>
@@ -293,10 +371,10 @@
                     <div class="col-sm-6">
                       <a href="播放链接">
                         <div class="thumbnail">
-                          <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
-                          <div class="caption">
-                            <p><a href="播放链接" >剧名</a> </p>
-                            <p><a href="播放链接" >简介</a> </p>
+                          <img class="picture3" src="http:////r1.ykimg.com/050C0000592E2FF5ADC0B006C401820E" >
+                  <div class="caption">
+                    <p><a class="name3" href="播放链接" >剧名</a> </p>
+                    <p><a class="information3" href="播放链接" >简介</a> </p>
                           </div>
                         </div>
                       </a>
@@ -308,23 +386,21 @@
                     <div class="col-sm-6">
                       <a href="播放链接">
                         <div class="thumbnail">
-                          <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
-                          <div class="caption">
-                            <p><a href="播放链接" >剧名</a> </p>
-                            <p><a href="播放链接" >简介</a> </p>
+                          <img class="picture3" src="http:////r1.ykimg.com/050C0000592E2FF5ADC0B006C401820E" >
+                  <div class="caption">
+                    <p><a class="name3" href="播放链接" >剧名</a> </p>
+                    <p><a class="information3" href="播放链接" >简介</a> </p>
                           </div>
                         </div>
                       </a>
                     </div>
                     <div class="col-sm-6">
                       <a href="播放链接">
-                        <div class="thumbnail">
-                          <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
-                          <div class="caption">
-                            <p><a href="播放链接" >剧名</a> </p>
-                            <p><a href="播放链接" >简介</a> </p>
+                        <img class="picture3" src="http:////r1.ykimg.com/050C0000592E2FF5ADC0B006C401820E" >
+                  <div class="caption">
+                    <p><a class="name3" href="播放链接" >剧名</a> </p>
+                    <p><a class="information3" href="播放链接" >简介</a> </p>
                           </div>
-                        </div>
                       </a>
                     </div>
                   </div>
@@ -341,46 +417,46 @@
             <div class="col-md-3">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
+                  <img class="picture4" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
                   <div class="caption">
-                    <p><a href="播放链接" >剧名</a> </p>
-                    <p><a href="播放链接" >简介</a> </p>
+                    <p><a class="name4" href="播放链接" >剧名</a> </p>
+                    <p><a class="information4" href="播放链接" >简介</a> </p>
                   </div>
                 </div>
               </a>
             </div>
             <div class="col-md-3">
-              <p><a href="播放链接">1</a></p>
-              <p><a href="播放链接">2</a></p>
-              <p><a href="播放链接">3</a></p>
-              <p><a href="播放链接">4</a></p>
+              <p><a class="name4_1" href="播放链接">1</a></p>
+              <p><a class="name4_1" href="播放链接">2</a></p>
+              <p><a class="name4_1" href="播放链接">3</a></p>
+              <p><a class="name4_1" href="播放链接">4</a></p>
             </div>
             <div class="col-md-3">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
+                  <img class="picture4" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
                   <div class="caption">
-                    <p><a href="播放链接" >剧名</a> </p>
-                    <p><a href="播放链接" >简介</a> </p>
+                    <p><a class="name4" href="播放链接" >剧名</a> </p>
+                    <p><a class="information4" href="播放链接" >简介</a> </p>
                   </div>
                 </div>
               </a>
             </div>
             <div class="col-md-3">
-              <p><a href="播放链接">1</a></p>
-              <p><a href="播放链接">2</a></p>
-              <p><a href="播放链接">3</a></p>
-              <p><a href="播放链接">4</a></p>
+              <p><a class="name4_1" href="播放链接">1</a></p>
+              <p><a class="name4_1" href="播放链接">2</a></p>
+              <p><a class="name4_1" href="播放链接">3</a></p>
+              <p><a class="name4_1" href="播放链接">4</a></p>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
+                  <img class="picture4" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
                   <div class="caption">
-                    <p><a href="播放链接" >剧名</a> </p>
-                    <p><a href="播放链接" >简介</a> </p>
+                    <p><a class="name4" href="播放链接" >剧名</a> </p>
+                    <p><a class="information4" href="播放链接" >简介</a> </p>
                   </div>
                 </div>
               </a>
@@ -388,10 +464,10 @@
             <div class="col-md-3">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
+                  <img class="picture4" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
                   <div class="caption">
-                    <p><a href="播放链接" >剧名</a> </p>
-                    <p><a href="播放链接" >简介</a> </p>
+                    <p><a class="name4" href="播放链接" >剧名</a> </p>
+                    <p><a class="information4" href="播放链接" >简介</a> </p>
                   </div>
                 </div>
               </a>
@@ -399,10 +475,10 @@
             <div class="col-md-3">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
+                  <img class="picture4" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
                   <div class="caption">
-                    <p><a href="播放链接" >剧名</a> </p>
-                    <p><a href="播放链接" >简介</a> </p>
+                    <p><a class="name4" href="播放链接" >剧名</a> </p>
+                    <p><a class="information4" href="播放链接" >简介</a> </p>
                   </div>
                 </div>
               </a>
@@ -410,10 +486,10 @@
             <div class="col-md-3">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
+                  <img class="picture4" src="http://r1.ykimg.com/0515000059358795ADB912073302DD6A" >
                   <div class="caption">
-                    <p><a href="播放链接" >剧名</a> </p>
-                    <p><a href="播放链接" >简介</a> </p>
+                    <p><a class="name4" href="播放链接" >剧名</a> </p>
+                    <p><a class="information4" href="播放链接" >简介</a> </p>
                   </div>
                 </div>
               </a>
@@ -426,14 +502,14 @@
             <div class="col-md-4">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http://r1.ykimg.com/050B0000593A0988ADC0B006CD020877" >
+                  <img class="picture5" src="http://r1.ykimg.com/050B0000593A0988ADC0B006CD020877" >
                 </div>
               </a>
             </div>
             <div class="col-md-8">
               <div class="caption">
-                <p><a href="播放链接" >剧名</a> </p>
-                <p>简介</p>
+                <p><a class="name5" href="播放链接" >剧名</a> </p>
+                <p><a class="information5">简介</a></p>
               </div>
             </div>
           </div>
@@ -441,14 +517,14 @@
             <div class="col-md-4">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http://r1.ykimg.com/050B0000593A0988ADC0B006CD020877" >
+                  <img class="picture5" src="http://r1.ykimg.com/050B0000593A0988ADC0B006CD020877" >
                 </div>
               </a>
             </div>
             <div class="col-md-8">
               <div class="caption">
-                <p><a href="播放链接" >剧名</a> </p>
-                <p>简介</p>
+                <p><a class="name5" href="播放链接" >剧名</a> </p>
+                <p><a class="information5">简介</a></p>
               </div>
             </div>
           </div>
@@ -456,14 +532,14 @@
             <div class="col-md-4">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http://r1.ykimg.com/050B0000593A0988ADC0B006CD020877" >
+                  <img class="picture5" src="http://r1.ykimg.com/050B0000593A0988ADC0B006CD020877" >
                 </div>
               </a>
             </div>
             <div class="col-md-8">
               <div class="caption">
-                <p><a href="播放链接" >剧名</a> </p>
-                <p>简介</p>
+                <p><a class="name5" href="播放链接" >剧名</a> </p>
+               <p><a class="information5">简介</a></p>
               </div>
             </div>
           </div>
@@ -471,14 +547,14 @@
             <div class="col-md-4">
               <a href="播放链接">
                 <div class="thumbnail">
-                  <img src="http://r1.ykimg.com/050B0000593A0988ADC0B006CD020877" >
+                  <img class="picture5" src="http://r1.ykimg.com/050B0000593A0988ADC0B006CD020877" >
                 </div>
               </a>
             </div>
             <div class="col-md-8">
               <div class="caption">
-                <p><a href="播放链接" >剧名</a> </p>
-                <p>简介</p>
+                <p><a class="name5" href="播放链接" >剧名</a> </p>
+                <p><a class="information5">简介</a></p>
               </div>
             </div>
           </div>  
