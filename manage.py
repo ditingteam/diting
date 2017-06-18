@@ -4,7 +4,7 @@ from app import create_app, db
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 # important
-from app.models import User, SuperDrama, HotList, PeakViewingTime
+from app.models import User, SuperDrama, HotList, PeakViewingTime, Video, Comment, VideoLink, History
 
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
@@ -31,3 +31,4 @@ def test():
 
 if __name__ == '__main__':
     manager.run()
+    

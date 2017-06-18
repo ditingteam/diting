@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from flask import render_template, session, redirect, url_for, request
-from app.models import HomePageData
 from app.databaseBack.homePageManagement import HomePageManagement
 from app.databaseBack.userManagement import UserManagement
 from flask_login import login_user, logout_user, current_user, login_required

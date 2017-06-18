@@ -66,7 +66,7 @@ class HomePageManagement(object):
             info5 = data_new_all.get('info')
             link5 = data_new_all.get('link')
             image5 = data_new_all.get('img')
-            title5 =data_new_all.get('title')
+            title5 = data_new_all.get('title')
             new_new_drama_trarker = NewDramaTrailer(Nid=i, Ninfo=info5, Nlink=link5, Nimg=image5, Ntitle=title5)
             db.session.add(new_new_drama_trarker)
             i += 1
