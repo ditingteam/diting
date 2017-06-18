@@ -92,6 +92,10 @@ class spider(object):
         :return:
         '''
         base_url = u'http://www.soku.com/search_video/q_'
+        try:
+            key_word.decode('utf-8')
+        except :
+            pass
         search_url = base_url + key_word
         soup = self.get_soup(url=search_url)
         posters = soup.select('div.s_poster')  # img,info,href
@@ -100,19 +104,25 @@ class spider(object):
         for i in range(len(posters)):
             dramas = {}
             dramas['img'] = posters[i].select('div.s_target')[0].img['src']
-            dramas['info'] = posters[i].select('div.s_link')[0].a['_log_title']
+            dramas['title'] = posters[i].select('div.s_link')[0].a['_log_title']
             soup1 = self.get_soup(url=posters[i].select('div.s_link')[0].a['href'])
             links = soup1.select('div.p1 div:nth-of-type(4) input')
             dramas['href'] = links[0]['value']  # 播放链接
-            dramas['Synopsis'] = informs[i].select('div.s_info p.c_dark span')[0]['data-text']
+            dramas['info'] = informs[i].select('div.s_info p.c_dark span')[0]['data-text']
             links = []
-            for link in informs[i].select('div.s_items.all.site14')[0].select('li'):
-                if not str(link.a['href']).startswith('java'):
+            if len(informs[i].select('div.s_items.all.site14')) != 0:
+                all_link = informs[i].select('div.s_items.all.site14')[0]
+            elif len(informs[i].select('div.s_items.gp.site14_0'))!=0:
+                all_link = informs[i].select('div.s_items.gp.site14_0')[0]
+            else:
+                all_link = informs[i].select('div.s_items.site14')[0]
+            for link in all_link.select('li'):
+                if not str(link.a['href']).startswith('java') and len(link.select('i.ico_partpre'))==0:
                     soup1 = self.get_soup(url=link.a['href'])
                     linkss = soup1.select('div.p1 div:nth-of-type(4) input')
                     links.append(linkss[0]['value'])  # 播放链接
             dramas['links'] = links
-            result.append(dramas.copy())
+            result.append(dramas)
         return result
 
     def Rank(self):
@@ -205,7 +215,8 @@ class spider(object):
 if __name__ == '__main__':
     a = spider()
    # print json.dumps(a.get_data(), ensure_ascii=False)
-    #key = raw_input()
+    key = u'楚乔传'
     #a.search(key.decode('utf-8'))
-    #print json.dumps(a.search(key.decode('utf-8')), ensure_ascii=False)
-    a.Posters()
+    data = a.search(key)
+    print len(data[0].get('links'))
+    print json.dumps(data, ensure_ascii=False)

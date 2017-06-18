@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from flask import render_template, session, redirect, url_for, request
-from app.models import HomePageData
 from app.databaseBack.homePageManagement import HomePageManagement
 from app.databaseBack.userManagement import UserManagement
 from flask_login import login_user, logout_user, current_user, login_required
 
+from app.databaseBack.videoManagement import VideoManagement
 from app.spider.Ver2 import spider
 from . import main
 from .. import db
@@ -21,7 +21,8 @@ def main_page_data():
 @main.route('/index', methods=['GET', 'POST'])
 def index():
     if request.args.get('sousuo')  is not None:
-        print request.args.get('sousuo')
+        video_name = request.args.get('sousuo')
+        session['video_name'] = video_name
         return main.send_static_file('search_result.html')
     elif current_user.is_authenticated:
         return main.send_static_file('home_page_after_login.html')
@@ -104,3 +105,8 @@ def change_password():
 def compile_information():
     if request.method == 'GET':
         return main.send_static_file('compile_information.html')
+
+@main.route('/search_data')
+def search_data():
+    video_name = session.get('video_name')
+    return VideoManagement.search_video(video_name)

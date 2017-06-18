@@ -26,7 +26,7 @@ class User(UserMixin, db.Model):
     place = db.Column(db.String(200))
     introduce = db.Column(db.String(200))
     register_time = db.Column(db.DateTime, default=datetime.now())
-    role = db.Column(db.String(1))
+    role = db.Column(db.String(1), default='g') # general 普通用户 admin 管理员（管理员用户是手动在后台添加的）
 
     @property
     # 只可以写，写的方法在下面，如果试图读，会返回错误
@@ -111,20 +111,31 @@ class PeakViewingTime(db.Model):
     Pimg = db.Column(db.String(100))
     Ptitle = db.Column(db.String(50))
 
+class Video(db.Model):
+    __tablename__ = 'video'
+    id = db.Column(db.Integer, primary_key=True)
+    Uname = db.Column(db.String(100), unique=True)
+    Uimage = db.Column(db.String(100))
+    Uinfo = db.Column(db.Text)
 
-class HomePageData(object):
-    @staticmethod
-    def BigStarXu():
-        from datetime import datetime, timedelta
+class Comment(db.Model):
+    __tablename__ = 'comment'
+    id = db.Column(db.Integer, primary_key=True)
+    Uid = db.Column(db.Integer, db.ForeignKey('video_link.id'))
+    Uno = db.Column(db.Integer, db.ForeignKey('users.id'))
+    Hdate = db.Column(db.DateTime, default=datetime.now())
+    comment_text = db.Column(db.String(200))
 
-        NOW = datetime.utcnow()
-        count = SuperDrama.query.filter(
-            SuperDrama.Stime.between(NOW - timedelta(seconds=12* 3600 - 1), NOW - timedelta(hours=0))).all()
-        drama = SuperDrama(Sid=0, Sinfo='')
-        db.session.add(drama)
-        db.session.commit()
-        if len(count) == 0:
-            return '666'
+class VideoLink(db.Model):
+    __tablename__ = 'video_link'
+    id = db.Column(db.Integer, primary_key=True)
+    Vid = db.Column(db.Integer, db.ForeignKey('video.id'))
+    episode = db.Column(db.Integer) #集数
+    link = db.Column(db.String(100), unique=True)
 
-if __name__ == '__main__':
-    HomePageData.BigStarXu()
+class History(db.Model):
+    __tablename__ = 'history'
+    id = db.Column(db.Integer, primary_key=True)
+    Uid = db.Column(db.Integer, db.ForeignKey('video_link.id'))
+    Uno = db.Column(db.Integer, db.ForeignKey('users.id'))
+    Hdate = db.Column(db.DateTime, default=datetime.now())
