@@ -103,6 +103,7 @@ def compile_information():
     if request.method == 'GET':
         return main.send_static_file('compile_information.html')
 
+
 @main.route('/search_data')
 def search_data():
     video_name = session.get('video_name')
