@@ -28,6 +28,7 @@ class User(UserMixin, db.Model):
     introduce = db.Column(db.String(200))
     register_time = db.Column(db.DateTime, default=datetime.now())
     role = db.Column(db.String(1), default='g') # general 普通用户 admin 管理员（管理员用户是手动在后台添加的）
+    nickname = db.Column(db.String(64))
 
     @property
     # 只可以写，写的方法在下面，如果试图读，会返回错误

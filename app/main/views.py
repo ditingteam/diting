@@ -102,6 +102,7 @@ def change_password():
 def compile_information():
     if request.method == 'GET':
         return main.send_static_file('compile_information.html')
+    return main.send_static_file('compile_information.html')
 
 
 @main.route('/search_data')
@@ -115,6 +116,6 @@ def search():
         video_name = request.args.get('sousuo')
         session['video_name'] = video_name
     if current_user.is_authenticated:
-        return main.send_static_file('search.html')
+        return main.send_static_file('search_result_after_login.html')
     else:
-        return main.send_static_file('search.html')
+        return main.send_static_file('search_result_before_login.html')
