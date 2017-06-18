@@ -112,6 +112,8 @@ class spider(object):
             links = []
             if len(informs[i].select('div.s_items.all.site14')) != 0:
                 all_link = informs[i].select('div.s_items.all.site14')[0]
+            elif len(informs[i].select('div.s_items.gp.site14_0'))!=0:
+                all_link = informs[i].select('div.s_items.gp.site14_0')[0]
             else:
                 all_link = informs[i].select('div.s_items.site14')[0]
             for link in all_link.select('li'):

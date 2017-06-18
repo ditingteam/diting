@@ -45,6 +45,7 @@ class HistoryManagement(object):
         db.session.add(history)
         db.session.commit()
 
+
     @classmethod
     def get_user_history(cls, username):
         user_id = UserManagement.get_user_id(username)

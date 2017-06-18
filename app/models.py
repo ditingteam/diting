@@ -131,7 +131,7 @@ class VideoLink(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Vid = db.Column(db.Integer, db.ForeignKey('video.id'))
     episode = db.Column(db.Integer) #集数
-    link = db.Column(db.String(20), unique=True)
+    link = db.Column(db.String(100), unique=True)
 
 class History(db.Model):
     __tablename__ = 'history'
