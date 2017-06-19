@@ -13,7 +13,7 @@ login_manager = LoginManager()
 # 地址和浏览器的用户代理信息，如果发现异动就登出用户。
 login_manager.session_protection = 'strong'
 # login_view 属性设置登录页面的端点,也就是auth/views.py中的路由
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'main.login'
 
 bootstrap = Bootstrap()
 moment = Moment()

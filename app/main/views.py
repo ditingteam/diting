@@ -102,6 +102,20 @@ def change_password():
 def compile_information():
     if request.method == 'GET':
         return main.send_static_file('compile_information.html')
+    else:
+        nickname = request.form.get('nickname')
+        sex_data = request.form.get('sex')
+        p_sign = request.form.get('p_sign')
+        birth = request.form.get('birthday')
+        phone = request.form.get('phone')
+        email = request.form.get('email')
+        address = request.form.get('address')
+        introduce = request.form.get('info')
+        sex = True if sex_data == 'male' else False
+        UserManagement.change_information(current_user.username, nickname, sex, p_sign,
+                                          birth, phone, email, address, introduce)
+        print 'change!',nickname
+        return redirect(url_for('main.index'))
 
 
 @main.route('/search_data')
@@ -115,6 +129,11 @@ def search():
         video_name = request.args.get('sousuo')
         session['video_name'] = video_name
     if current_user.is_authenticated:
-        return main.send_static_file('search.html')
+        return main.send_static_file('search_result_after_login.html')
     else:
-        return main.send_static_file('search.html')
+        return main.send_static_file('search_result_before_login.html')
+
+@login_required
+@main.route('/get_information')
+def get_information():
+    return UserManagement.get_information(current_user.username)
