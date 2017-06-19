@@ -119,7 +119,7 @@ class UserManagement(object):
         :return:
         '''
         if isinstance(obj, datetime):
-            return obj.strftime('%Y-%m-%dT%H:%M:%S')
+            return obj.strftime('%Y-%m-%d %H:%M:%S')
         elif isinstance(obj, date):
             return obj.strftime('%Y-%m-%d')
         else:
