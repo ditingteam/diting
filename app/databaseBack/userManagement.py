@@ -89,4 +89,5 @@ class UserManagement(object):
         information['email'] = user.email
         information['address'] = user.place
         information['introduce'] = user.introduce
+        information['register_time'] = user.register_time
         return json.dumps(information, ensure_ascii=False)

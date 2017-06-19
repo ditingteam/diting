@@ -50,7 +50,8 @@ class HistoryManagement(object):
     def get_user_history(cls, username):
         user_id = UserManagement.get_user_id(username)
         user_history = History.query.order_by(History.Hdate).filter_by(Uno=user_id).all()
-
+        history_all_data = []
         for history in user_history[:10]:
-            pass
+            history_data = {}
+            history_data['video_name'] = VideoManagement
         return
