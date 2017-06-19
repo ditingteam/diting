@@ -102,3 +102,8 @@ class VideoManagement(object):
                                    episode=i)
             db.session.add(video_link)
         db.session.commit()
+
+    @classmethod
+    def get_video_link(cls, video_name, episode):
+        video_id = cls.get_video_id(video_name)
+        return VideoLink.query.filter_by(Vid=video_id, episode=episode).first().link

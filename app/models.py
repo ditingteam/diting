@@ -21,7 +21,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True)
     password_hash = db.Column(db.String(128))
-    sex = db.Column(db.Boolean)
+    sex = db.Column(db.Boolean) # True male
     birth = db.Column(db.String(20))
     tel = db.Column(db.String(11))
     place = db.Column(db.String(200))
@@ -29,6 +29,7 @@ class User(UserMixin, db.Model):
     register_time = db.Column(db.DateTime, default=datetime.now())
     role = db.Column(db.String(1), default='g') # general 普通用户 admin 管理员（管理员用户是手动在后台添加的）
     nickname = db.Column(db.String(64))
+    p_sign = db.Column(db.Text)
 
     @property
     # 只可以写，写的方法在下面，如果试图读，会返回错误
