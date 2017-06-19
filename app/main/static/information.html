@@ -6,13 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>个人信息</title>
-
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    //加载信息
+    //加载个人信息
     <script>
+        $(document).ready(function () {
+            $.get("/get_information", function (data) {
+                var temp_json = JSON.parse(data)
+                $("#nickname")[0].textContent=temp_json.nickname
+                $("#sex")[0].textContent=temp_json.sex
+                $("#p_sign")[0].textContent=temp_json.p_sign
+                $("#birthday")[0].textContent=temp_json.birth
+                $("#phone")[0].textContent=temp_json.phone
+                $("#email")[0].textContent=temp_json.email
+                $("#address")[0].textContent=temp_json.address
+                $("#_time")[0].textContent=temp_json.register_time
+                $("#info")[0].textContent=temp_json.introduce
 
+            })
+        })
     </script>
 </head>
 <body>
@@ -68,24 +84,21 @@
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                     <p>
-                    <h3>昵称：</h3></p>
-                    <p><h4>性别：</h4></p>
-                    <p><h4>个签：</h4></p>
-                    <p><h4>生日：</h4></p>
-                    <p><h4>电话：</h4></p>
+                    <h3>昵称：<span id="nickname"></span></h3></p>
+                    <p><h4>性别：<span id="sex"></span></h4></p>
+                    <p><h4>个签：<span id="p_sign"></span></h4></p>
+                    <p><h4>生日：<span id="birthday"></span></h4></p>
+                    <p><h4>电话：<span id="phone"></span></h4></p>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
-                    <p><h4>email：</h4></p>
-                    <p><h4>所在地：</h4></p>
-                    <p><h4>注册时间：</h4></p>
-                    <p><h4>个人简介：</h4></p>
+                    <p><h4>email：<span id="email"></span></h4></p>
+                    <p><h4>所在地：<span id="address"></span></h4></p>
+                    <p><h4>注册时间：<span id="_time"></span></h4></p>
+                    <p><h4>个人简介：<span id="info"></span></h4></p>
                 </div><!-- /.col-lg-4 -->
             </div>
         </div>
     </div>
 </div>
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
