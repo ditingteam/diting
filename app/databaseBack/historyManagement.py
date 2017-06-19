@@ -29,7 +29,7 @@ from app.models import History, VideoLink
 class HistoryManagement(object):
     @classmethod
     def get_history(cls, user_id, video_link_id):
-        return History.query.filter_by(Uid=video_link_id, Uno=user_id).first
+        return History.query.filter_by(Uid=video_link_id, Uno=user_id).first()
 
 
     @classmethod
@@ -50,4 +50,7 @@ class HistoryManagement(object):
     def get_user_history(cls, username):
         user_id = UserManagement.get_user_id(username)
         user_history = History.query.order_by(History.Hdate).filter_by(Uno=user_id).all()
-        return user_history[:10]
+
+        for history in user_history[:10]:
+            pass
+        return

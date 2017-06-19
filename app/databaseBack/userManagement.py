@@ -1,3 +1,5 @@
+import json
+
 from app import db
 from app.models import User, History
 from app.databaseBack.videoManagement import VideoManagement
@@ -62,13 +64,29 @@ class UserManagement(object):
         return UserManagement.get_user_id(username)
 
     @classmethod
-    def change_information(cls):
-        # todo change information
-        pass
+    def change_information(cls, username, nickname, sex, p_sign, birthday, phone, email, address, introduce):
+        user = cls.get_user(username)
+        user.nickname = nickname
+        user.sex = sex
+        user.p_sign = p_sign
+        user.birth = birthday
+        user.tel = phone
+        user.email = email
+        user.place = address
+        user.introduce = introduce
+        db.session.add(user)
+        db.session.commit()
 
-
-
-
-
-
-
+    @classmethod
+    def get_information(cls, username):
+        user = cls.get_user(username)
+        information = {}
+        information['nickname'] = user.username
+        information['sex'] = 'male' if user.sex else 'female'
+        information['p_sign'] = user.p_sign
+        information['birth'] = user.birth
+        information['phone'] = user.tel
+        information['email'] = user.email
+        information['address'] = user.place
+        information['introduce'] = user.introduce
+        return json.dumps(information, ensure_ascii=False)
