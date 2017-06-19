@@ -105,6 +105,12 @@ class VideoManagement(object):
 
     @classmethod
     def get_video_link(cls, video_name, episode):
+        '''
+        根据给定的视频名称和集数获取视频链接
+        :param video_name:
+        :param episode:
+        :return:
+        '''
         video_id = cls.get_video_id(video_name)
         return VideoLink.query.filter_by(Vid=video_id, episode=episode).first().link
 

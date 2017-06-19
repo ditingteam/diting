@@ -13,13 +13,18 @@ from datetime import *
 class UserManagement(object):
     @classmethod
     def has_user(cls, username):
+        '''
+        检查数据库是否存在此用户
+        :param username:
+        :return:
+        '''
         user = UserManagement.get_user(username)
         return True if user is not None else False
 
     @classmethod
     def register(cls, username, password):
         '''
-        only when the user exist return false
+        注册函数
         :param username:
         :param password:
         :return:
@@ -35,7 +40,7 @@ class UserManagement(object):
     @classmethod
     def login(cls, username, password):
         '''
-
+        登录函数
         :param username:
         :param password:
         :return: user or None
@@ -51,10 +56,22 @@ class UserManagement(object):
 
     @classmethod
     def get_user(cls, username):
+        '''
+        根据用户名获取用户实体
+        :param username:
+        :return:
+        '''
         return User.query.filter_by(username=username).first()
 
     @classmethod
     def change_password(cls, username, old_password, password):
+        '''
+        修改密码
+        :param username:
+        :param old_password:
+        :param password:
+        :return:
+        '''
         user = UserManagement.get_user(username)
         if user.verify_password(old_password):
             user.reset_password(password)
@@ -68,6 +85,19 @@ class UserManagement(object):
 
     @classmethod
     def change_information(cls, username, nickname, sex, p_sign, birthday, phone, email, address, introduce):
+        '''
+        根据给定的信息修改个人信息
+        :param username:
+        :param nickname:
+        :param sex:
+        :param p_sign:
+        :param birthday:
+        :param phone:
+        :param email:
+        :param address:
+        :param introduce:
+        :return:
+        '''
         user = cls.get_user(username)
         user.nickname = nickname
         user.sex = sex
@@ -96,6 +126,11 @@ class UserManagement(object):
             raise TypeError('%r is not JSON serializable' % obj)
     @classmethod
     def get_information(cls, username):
+        '''
+        获取个人信息
+        :param username:
+        :return:json格式的个人信息
+        '''
         user = cls.get_user(username)
         information = {}
         information['nickname'] = user.username
