@@ -18,7 +18,7 @@ __mtime__ = '17-6-17'
                   ┃┫┫  ┃┫┫
                   ┗┻┛  ┗┻┛
 """
-
+import json
 from datetime import *
 from app import db
 from app.databaseBack.userManagement import UserManagement
@@ -52,6 +52,5 @@ class HistoryManagement(object):
         user_history = History.query.order_by(History.Hdate).filter_by(Uno=user_id).all()
         history_all_data = []
         for history in user_history[:10]:
-            history_data = {}
-            history_data['video_name'] = VideoManagement
-        return
+            history_all_data.append(VideoManagement.get_video_name(history.Vid))
+        return json.dumps(history_all_data)
