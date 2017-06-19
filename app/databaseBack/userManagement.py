@@ -1,9 +1,12 @@
+# -*- coding:utf8 -*-
 import json
 
 from app import db
 from app.models import User, History
 from app.databaseBack.videoManagement import VideoManagement
 from datetime import *
+
+
 
 
 
@@ -78,6 +81,20 @@ class UserManagement(object):
         db.session.commit()
 
     @classmethod
+    def __default(cls, obj):
+        '''
+        时间格式化工具函数
+        不需要写测试
+        :param obj:
+        :return:
+        '''
+        if isinstance(obj, datetime):
+            return obj.strftime('%Y-%m-%dT%H:%M:%S')
+        elif isinstance(obj, date):
+            return obj.strftime('%Y-%m-%d')
+        else:
+            raise TypeError('%r is not JSON serializable' % obj)
+    @classmethod
     def get_information(cls, username):
         user = cls.get_user(username)
         information = {}
@@ -90,4 +107,4 @@ class UserManagement(object):
         information['address'] = user.place
         information['introduce'] = user.introduce
         information['register_time'] = user.register_time
-        return json.dumps(information, ensure_ascii=False)
+        return json.dumps(information, ensure_ascii=False, default=UserManagement.__default)
