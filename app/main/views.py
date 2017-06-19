@@ -110,7 +110,7 @@ def compile_information():
         phone = request.form.get('phone')
         email = request.form.get('email')
         address = request.form.get('address')
-        introduce = request.form.get('info')
+        introduce = request.form.get('introduce')
         sex = True if sex_data == 'male' else False
         UserManagement.change_information(current_user.username, nickname, sex, p_sign,
                                           birth, phone, email, address, introduce)
