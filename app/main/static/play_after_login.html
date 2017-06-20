@@ -10,9 +10,12 @@
     <title>播放</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
     //加载视频链接
     <script>
         $(document).ready(function () {
+
+            //获取地址栏传送的地址
             function GetQueryString(name) {
                 var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
                 var r = window.location.search.substr(1).match(reg);
@@ -20,6 +23,7 @@
                 return null;
             }
 
+            //根据获取的地址播放
             var sr = $("iframe")
             sr[0].src = GetQueryString("playAddress")
         })
