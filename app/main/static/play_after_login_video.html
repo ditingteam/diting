@@ -8,6 +8,31 @@
     <title>播放</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    //异步加载评论
+    <script>
+        function loadAjax() {
+            var jsonAjax
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                jsonAjax = new XMLHttpRequest()
+            }
+            else {// code for IE6, IE5
+                jsonAjax = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            jsonAjax.onreadystatechange = function () {
+                if (jsonAjax.readyState == 4 && jsonAjax.status == 200) {
+                    var z=$(".media-body")
+                    alert(z)
+                    z[0].textContent = jsonAjax.responseText
+                }
+            }
+            var x=$("#comment")
+            var url="/get_comment"+"?"
+            jsonAjax.open("GET", "", true);
+            jsonAjax.send();
+
+        }
+    </script>
 </head>
 
 <body>
@@ -129,7 +154,7 @@
                     <p><h4>发表评论：</h4></p>
                     <form class="navbar-form navbar-left ">
                         <div class="form-group">
-                            <input style="width: 300%" type="text" class="form-control" name="sousuo" placeholder="">
+                            <input  style="width: 300%" type="text" class="form-control" name="sousuo" placeholder="">
                             <button type="submit" class="btn btn-default">发表</button>
                         </div>
 
