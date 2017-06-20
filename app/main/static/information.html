@@ -18,7 +18,6 @@
             $.get("/get_information", function (data) {
                 var temp_json = JSON.parse(data)
                 $("#nickname")[0].textContent=temp_json.nickname
-                $("#sex")[0].textContent=temp_json.sex
                 $("#p_sign")[0].textContent=temp_json.p_sign
                 $("#birthday")[0].textContent=temp_json.birth
                 $("#phone")[0].textContent=temp_json.phone
@@ -26,7 +25,11 @@
                 $("#address")[0].textContent=temp_json.address
                 $("#_time")[0].textContent=temp_json.register_time
                 $("#info")[0].textContent=temp_json.introduce
-
+                $("#username_h")[0].textContent=temp_json.username
+                if(temp_json.sex=="male")
+                    $("#sex")[0].textContent="男"
+                else if(temp_json.sex=="female")
+                    $("#sex")[0].textContent="女"
             })
         })
     </script>
@@ -64,7 +67,7 @@
                 <div class="col-lg-4">
                     <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg"
                          alt="Generic placeholder image" width="140" height="140">
-                    <h2>你好</h2>
+                    <h2 >你好<span id="username_h"></span></h2>
                     <p>
                     <h3>欢迎回家</h3></p>
                     <div class="col-md-6">
