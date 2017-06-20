@@ -148,7 +148,7 @@ def video_play_homepage():
 @main.route('/video_play')
 def video_play():
     if current_user.is_authenticated:
-        video_link = request.args.get('play_address')
+        video_link = request.args.get('playAddress')
         HistoryManagement.add_history(current_user.username, video_link)
         return main.send_static_file('play_after_login_video.html')
     else:
@@ -156,14 +156,14 @@ def video_play():
 
 @main.route('/add_comment')
 def add_comment():
-    video_link = request.args.get('play_address')
+    video_link = request.args.get('playAddress')
     username = current_user.username
     comment = request.args.get('comment')
     CommentManagement.add_comment(username, video_link, comment)
 
 @main.route('/get_comment')
 def get_comment():
-    video_link = request.args.get('play_address')
+    video_link = request.args.get('playAddress')
     return CommentManagement.get_comment(video_link)
 
 @main.route('/delete_comment')
