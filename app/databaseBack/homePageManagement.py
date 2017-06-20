@@ -7,6 +7,10 @@ import json
 class HomePageManagement(object):
     @staticmethod
     def init_homepage():
+        '''
+        初始化首页数据（第一次建表时）
+        :return:
+        '''
         my_spider = spider()
         data = my_spider.get_data()
         data_superdrama = data.get(u'超级网剧')
@@ -76,6 +80,10 @@ class HomePageManagement(object):
 
     @staticmethod
     def get_homepage():
+        '''
+        获取首页数据
+        :return:
+        '''
         data = {}
         super_drama_all_data = SuperDrama.query.all()
         super_dramer_list = []
@@ -141,6 +149,10 @@ class HomePageManagement(object):
 
     @staticmethod
     def upgrade():
+        '''
+        更新首页数据，此函数应该有管理员调用
+        :return:
+        '''
         my_spider = spider()
         data = my_spider.get_data()
         data_superdrama = data.get(u'超级网剧')

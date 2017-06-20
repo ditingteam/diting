@@ -29,11 +29,23 @@ from app.models import History, VideoLink
 class HistoryManagement(object):
     @classmethod
     def get_history(cls, user_id, video_link_id):
+        '''
+        根据用户id和视频链接id获取历史纪录
+        :param user_id:
+        :param video_link_id:
+        :return:
+        '''
         return History.query.filter_by(Uid=video_link_id, Uno=user_id).first()
 
 
     @classmethod
     def add_history(cls, username, video_link):
+        '''
+        根据用户名和视频链接增加历史记录
+        :param username:
+        :param video_link:
+        :return:无
+        '''
         user_id = UserManagement.get_user_id(username)
         video_link_id = VideoLink.query.filter_by(link=video_link).first().id
         history = HistoryManagement.get_history(user_id, video_link_id)
@@ -48,6 +60,11 @@ class HistoryManagement(object):
 
     @classmethod
     def get_user_history(cls, username):
+        '''
+        获取某用户的历史记录
+        :param username:
+        :return:
+        '''
         user_id = UserManagement.get_user_id(username)
         user_history = History.query.order_by(History.Hdate).filter_by(Uno=user_id).all()
         history_all_data = []
