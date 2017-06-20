@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 from flask import render_template, session, redirect, url_for, request
+
+from app.databaseBack.commentManagement import CommentManagement
+from app.databaseBack.historyManagement import HistoryManagement
 from app.databaseBack.homePageManagement import HomePageManagement
 from app.databaseBack.userManagement import UserManagement
 from flask_login import login_user, logout_user, current_user, login_required
 
 from app.databaseBack.videoManagement import VideoManagement
-from app.spider.Ver2 import spider
 from . import main
-from .. import db
-import json
 
 
 @main.route('/main_page_data')
@@ -110,7 +110,7 @@ def compile_information():
         phone = request.form.get('phone')
         email = request.form.get('email')
         address = request.form.get('address')
-        introduce = request.form.get('info')
+        introduce = request.form.get('introduce')
         sex = True if sex_data == 'male' else False
         UserManagement.change_information(current_user.username, nickname, sex, p_sign,
                                           birth, phone, email, address, introduce)
@@ -137,3 +137,37 @@ def search():
 @main.route('/get_information')
 def get_information():
     return UserManagement.get_information(current_user.username)
+
+@main.route('/video_play_homepage')
+def video_play_homepage():
+    if current_user.is_authenticated:
+        return main.send_static_file('play_after_login.html')
+    else:
+        return main.send_static_file('play_before_login.html')
+
+@main.route('/video_play')
+def video_play():
+    if current_user.is_authenticated:
+        video_link = request.args.get('play_address')
+        HistoryManagement.add_history(current_user.username, video_link)
+        return main.send_static_file('play_after_login_video.html')
+    else:
+        return main.send_static_file('play_before_login_video.html')
+
+@main.route('/add_comment')
+def add_comment():
+    video_link = request.args.get('play_address')
+    username = current_user.username
+    comment = request.args.get('comment')
+    CommentManagement.add_comment(username, video_link, comment)
+
+@main.route('/get_comment')
+def get_comment():
+    video_link = request.args.get('play_address')
+    return CommentManagement.get_comment(video_link)
+
+@main.route('/delete_comment')
+def delete_comment():
+    username = request.args.get('username')
+    video_link = request.args.get('play_address')
+    CommentManagement.delete_commit(username, video_link)
