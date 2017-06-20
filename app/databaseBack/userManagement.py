@@ -2,8 +2,7 @@
 import json
 
 from app import db
-from app.models import User, History
-from app.databaseBack.videoManagement import VideoManagement
+from app.models import User
 from datetime import *
 
 
@@ -81,7 +80,7 @@ class UserManagement(object):
 
     @classmethod
     def get_user_id(cls, username):
-        return UserManagement.get_user_id(username)
+        return UserManagement.get_user(username).id
 
     @classmethod
     def change_information(cls, username, nickname, sex, p_sign, birthday, phone, email, address, introduce):
@@ -133,7 +132,8 @@ class UserManagement(object):
         '''
         user = cls.get_user(username)
         information = {}
-        information['nickname'] = user.username
+        information['username'] = user.username
+        information['nickname'] = user.nickname
         information['sex'] = 'male' if user.sex else 'female'
         information['p_sign'] = user.p_sign
         information['birth'] = user.birth
@@ -142,4 +142,6 @@ class UserManagement(object):
         information['address'] = user.place
         information['introduce'] = user.introduce
         information['register_time'] = user.register_time
+        from app.databaseBack.historyManagement import HistoryManagement
+        information['history'] = HistoryManagement.get_user_history(username)
         return json.dumps(information, ensure_ascii=False, default=UserManagement.__default)
