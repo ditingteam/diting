@@ -115,5 +115,6 @@ class VideoManagement(object):
         return VideoLink.query.filter_by(Vid=video_id, episode=episode).first().link
 
     @classmethod
-    def get_video_name(cls, video_id):
+    def get_video_name(cls, video_link_id):
+        video_id = VideoLink.query.filter_by(id=video_link_id).first().Vid
         return Video.query.filter_by(id=video_id).first().Uname

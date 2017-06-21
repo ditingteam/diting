@@ -35,7 +35,17 @@ class CommentManagement(object):
         '''
         video_link_id = VideoLink.query.filtry_by(link=video_link).first().id
         comments = Comment.query.filter_by(Uid = video_link_id).all()
-        return json.dumps(comments, ensure_ascii=False)
+        all_data = []
+        for comment in comments:
+            data = {}
+            user_id = comment.Uno
+            username = UserManagement.get_user_name(user_id)
+            data['username'] = username
+            data['comment'] = comment.comment_text
+            data['date'] = comment.Hdate
+            all_data.append(data)
+
+        return json.dumps(all_data, ensure_ascii=False)
 
     @classmethod
     def add_comment(cls, username, video_link, comment):

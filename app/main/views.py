@@ -149,6 +149,7 @@ def video_play_homepage():
 def video_play():
     if current_user.is_authenticated:
         video_link = request.args.get('playAddress')
+        print "add"
         HistoryManagement.add_history(current_user.username, video_link)
         return main.send_static_file('play_after_login_video.html')
     else:

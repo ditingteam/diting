@@ -145,3 +145,7 @@ class UserManagement(object):
         from app.databaseBack.historyManagement import HistoryManagement
         information['history'] = HistoryManagement.get_user_history(username)
         return json.dumps(information, ensure_ascii=False, default=UserManagement.__default)
+
+    @classmethod
+    def get_user_name(cls, user_id):
+        return User.query.filter_by(id=user_id).first().username
