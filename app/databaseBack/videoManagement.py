@@ -48,7 +48,6 @@ class VideoManagement(object):
         data = VideoManagement.search_video_from_database(video_name)
         if data is None:
             data = VideoManagement.search_video_from_internet(video_name)
-        print data
         return json.dumps(data, ensure_ascii=False)
 
     @classmethod

@@ -34,9 +34,9 @@ class CommentManagement(object):
         :return: 对应视频的所有评论
         '''
         video_link_id = VideoLink.query.filter_by(link=video_link).first().id
-        comments = Comment.query.filter_by(Uid=video_link_id).all()
+        comments = Comment.query.order_by(Comment.Hdate).filter_by(Uid=video_link_id).all()
         all_data = []
-        for comment in comments[:10]:
+        for comment in comments[:5]:
             data = {}
             user_id = comment.Uno
             username = UserManagement.get_user_name(user_id)
