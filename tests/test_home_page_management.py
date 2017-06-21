@@ -7,15 +7,6 @@ from app.models import User, SuperDrama, HotList, PeakViewingTime, Video, Commen
 
 
 class HomePageManagementTest(unittest.TestCase):
-    def setUp(self):
-        super(HomePageManagementTest, self).setUp()
-        db.create_all()
-        HomePageManagement.init_homepage()
-
-    def tearDown(self):
-        super(HomePageManagementTest, self).tearDown()
-        db.drop_all()
-
 
 
     def test_get_homepage(self):

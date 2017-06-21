@@ -1,4 +1,4 @@
-# -*- coding :utf-8 -*-
+# -*- coding: utf-8 -*-
 import unittest
 from app import db
 from app.databaseBack.userManagement import UserManagement
@@ -7,30 +7,27 @@ from app.models import User, SuperDrama, HotList, PeakViewingTime, Video, Commen
 
 
 class UsermanagementTest(unittest.TestCase):
-    def setUp(self):
-        super(UsermanagementTest, self).setUp()
-        db.create_all()
 
-    def tearDown(self):
-        super(UsermanagementTest, self).tearDown()
-        db.drop_all()
 
     def test_a_register(self):
-        UserManagement.register('xiaochao', 'a000000')
+        # 已经有用户xiaochao，密码是a000000
         self.assertFalse(UserManagement.register('xiaochao', 'a999999'))
 
     def test_b_login(self):
 
-        self.assertIsNotNone('xiaochao','a000000')
+        self.assertIsNotNone(UserManagement.login('xiaochao', 's111111'))
 
     def test_c_has_user(self):
-        self.assertIsNotNone(self.myDatabaseBack.has_user)
+        self.assertTrue(UserManagement.has_user('xiaochao'))
+        self.assertFalse(UserManagement.has_user('xiaohong'))
 
     def test_d_get_user(self):
-        self.assertIsNotNone(self.myDatabaseBack.get_user)
+        self.assertIsNotNone(UserManagement.get_user('xiaochao'))
 
     def test_e_change_password(self):
-        self.assertFalse(UserManagement.change_password('xiaochao', 'a000000','s111111'))
+        self.assertTrue(UserManagement.change_password('xiaochao', 's111111','a000000'))
+        self.assertIsNone(UserManagement.login('xiaochao', 's111111'))
+        self.assertIsNotNone(UserManagement.login('xiaochao', 'a000000'))
 
     def test_f_get_information(self):
         self.assertIsNotNone(UserManagement.get_information('xiaochao'))
