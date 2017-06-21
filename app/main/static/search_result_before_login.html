@@ -22,12 +22,12 @@
         </div>
     </script>
     <script type="text/javascript">
-        function createCol(j) {
-            var html2 = $("#tempCol")[0].innerHTML
-            var para2 = document.createElement("div")
-            para2.innerHTML = html2
+        function createCol() {
+            var html = $("#tempCol")[0].innerHTML
+            var para = document.createElement("div")
+            para.innerHTML = html
             var x = $(".episodeCol")
-            x[j].appendChild(para2)
+            x[0].appendChild(para)
         }
     </script>
     <script>
@@ -43,7 +43,7 @@
                 $("#namePlay")[0].href = play_address + "?playAddress=" + temp_json[0].links[0]
                 //加载剧集列表
                 for (var i = 0; i < temp_json[0].links.length - 1; i++)
-                    createCol(0)
+                    createCol()
                 var playList = $(".list-group-item")
                 for (var i = 0; i < temp_json[0].links.length; i++) {
                     playList[i].href = play_address + "?playAddress=" + temp_json[0].links[i]
