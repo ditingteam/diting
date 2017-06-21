@@ -23,7 +23,7 @@ from datetime import *
 from app import db
 from app.databaseBack.userManagement import UserManagement
 from app.databaseBack.videoManagement import VideoManagement
-from app.models import History, VideoLink
+from app.models import History, VideoLink, Video
 
 
 class HistoryManagement(object):
@@ -69,6 +69,11 @@ class HistoryManagement(object):
         user_history = History.query.order_by(History.Hdate).filter_by(Uno=user_id).all()
         history_all_data = []
         for history in user_history[:10]:
-            print history.Uid
-            history_all_data.append(VideoManagement.get_video_name(history.Uid))
-        return json.dumps(history_all_data, ensure_ascii=False)
+            history_data = {}
+            video_link = VideoLink.query.filter_by(id=history.Uid).first()
+            video = Video.query.filter_by(id=video_link.Vid).first()
+            history_data['episode'] = video_link.episode
+            history_data['video_name'] = video.Uname
+            history_data['link'] = video_link.link
+            history_all_data.append(history_data)
+        return history_all_data
