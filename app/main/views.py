@@ -140,9 +140,9 @@ def get_information():
 @main.route('/video_play_homepage')
 def video_play_homepage():
     if current_user.is_authenticated:
-        return main.send_static_file('play_after_login.html')
+        return main.send_static_file('play_home_video_after_login.html')
     else:
-        return main.send_static_file('play_before_login.html')
+        return main.send_static_file('play_home_video_before_login.html')
 
 @main.route('/video_play')
 def video_play():
@@ -150,9 +150,9 @@ def video_play():
         video_link = request.args.get('playAddress')
         print "add"
         HistoryManagement.add_history(current_user.username, video_link)
-        return main.send_static_file('play_after_login_video.html')
+        return main.send_static_file('play_video_after_login.html')
     else:
-        return main.send_static_file('play_before_login_video.html')
+        return main.send_static_file('play_video_before_login.html')
 
 @main.route('/add_comment')
 def add_comment():
