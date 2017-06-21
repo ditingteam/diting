@@ -3,6 +3,8 @@ import unittest
 from app import db
 from app.databaseBack import commentManagement
 from app.databaseBack.userManagement import UserManagement
+from app.models import User, SuperDrama, HotList, PeakViewingTime, Video, Comment, VideoLink, History
+
 
 
 class CommentManagementTest(unittest.TestCase):

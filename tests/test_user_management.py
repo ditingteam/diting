@@ -2,6 +2,8 @@
 import unittest
 from app import db
 from app.databaseBack.userManagement import UserManagement
+from app.models import User, SuperDrama, HotList, PeakViewingTime, Video, Comment, VideoLink, History
+
 
 
 class UsermanagementTest(unittest.TestCase):
