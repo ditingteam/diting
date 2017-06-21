@@ -67,15 +67,14 @@ def register():
         return redirect(url_for('main.login'))
 
 
-@main.route('/logout')
 @login_required
+@main.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('main.index'))
 
-
-@main.route('/information')
 @login_required
+@main.route('/information')
 def information():
     return main.send_static_file('information.html')
 
@@ -170,5 +169,6 @@ def get_comment():
 @main.route('/delete_comment')
 def delete_comment():
     username = request.args.get('username')
-    video_link = request.args.get('play_address')
-    CommentManagement.delete_commit(username, video_link)
+    video_link = request.args.get('playAddress')
+    comment_time = request.args.get('comment_time')
+    CommentManagement.delete_commit(username, video_link, comment_time)
