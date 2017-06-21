@@ -102,27 +102,27 @@ class spider(object):
         informs = soup.select('div.s_inform')  # 剧集信息
         result = []
         for i in range(len(posters)):
-            dramas = {}
-            dramas['img'] = posters[i].select('div.s_target')[0].img['src']
-            dramas['title'] = posters[i].select('div.s_link')[0].a['_log_title']
-            soup1 = self.get_soup(url=posters[i].select('div.s_link')[0].a['href'])
-            links = soup1.select('div.p1 div:nth-of-type(4) input')
-            dramas['href'] = links[0]['value']  # 播放链接
-            dramas['info'] = informs[i].select('div.s_info p.c_dark span')[0]['data-text']
-            links = []
-            if len(informs[i].select('div.s_items.all.site14')) != 0:
-                all_link = informs[i].select('div.s_items.all.site14')[0]
-            elif len(informs[i].select('div.s_items.gp.site14_0'))!=0:
-                all_link = informs[i].select('div.s_items.gp.site14_0')[0]
-            else:
-                all_link = informs[i].select('div.s_items.site14')[0]
-            for link in all_link.select('li'):
-                if not str(link.a['href']).startswith('java') and len(link.select('i.ico_partpre'))==0:
-                    soup1 = self.get_soup(url=link.a['href'])
-                    linkss = soup1.select('div.p1 div:nth-of-type(4) input')
-                    links.append(linkss[0]['value'])  # 播放链接
-            dramas['links'] = links
-            result.append(dramas)
+            try:
+                dramas = {}
+                dramas['img'] = posters[i].select('div.s_target')[0].img['src']
+                dramas['title'] = posters[i].select('div.s_link')[0].a['_log_title']
+                dramas['info'] = informs[i].select('div.s_info p.c_dark span')[0]['data-text']
+                links = []
+                if len(informs[i].select('div.s_items.all.site14')) != 0:
+                    all_link = informs[i].select('div.s_items.all.site14')[0]
+                elif len(informs[i].select('div.s_items.gp.site14_0'))!=0:
+                    all_link = informs[i].select('div.s_items.gp.site14_0')[0]
+                else:
+                    all_link = informs[i].select('div.s_items.site14')[0]
+                for link in all_link.select('li'):
+                    if not str(link.a['href']).startswith('java') and len(link.select('i.ico_partpre'))==0:
+                        soup1 = self.get_soup(url=link.a['href'])
+                        linkss = soup1.select('div.p1 div:nth-of-type(4) input')
+                        links.append(linkss[0]['value'])  # 播放链接
+                dramas['links'] = links
+                result.append(dramas)
+            except Exception:
+                pass
         return result
 
     def Rank(self):
