@@ -110,7 +110,7 @@ class UserManagement(object):
         db.session.commit()
 
     @classmethod
-    def __default(cls, obj):
+    def default1(cls, obj):
         '''
         时间格式化工具函数
         不需要写测试
@@ -144,7 +144,7 @@ class UserManagement(object):
         information['register_time'] = user.register_time
         from app.databaseBack.historyManagement import HistoryManagement
         information['history'] = HistoryManagement.get_user_history(username)
-        return json.dumps(information, ensure_ascii=False, default=UserManagement.__default)
+        return json.dumps(information, ensure_ascii=False, default=UserManagement.default1)
 
     @classmethod
     def get_user_name(cls, user_id):

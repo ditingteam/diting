@@ -15,25 +15,50 @@
 
     //加载视频链接
     <script>
+        //获取地址栏传送的地址
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)return unescape(r[2]);
+            return null;
+        }
+        //根据获取的地址播放
         $(document).ready(function () {
-
-            //获取地址栏传送的地址
-            function GetQueryString(name) {
-                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-                var r = window.location.search.substr(1).match(reg);
-                if (r != null)return unescape(r[2]);
-                return null;
-            }
-
-            //根据获取的地址播放
             var sr = $("iframe")
             sr[0].src = GetQueryString("playAddress")
         })
     </script>
+
+    //动态加载评论列表
+    <script type="text/html" id="tempCol">
+        <div class="media-left">
+            <a href="#">
+                <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" width="100"
+                     height="100">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="comment_nickname" class="media-heading">昵称</h4>
+            <p class="comment_show">这AV拍的还可以，男女主表情丰富、动作到位，配音还很好听，我给5分！</p>
+            <p class="comment_data" align="right">发表时间：<span class="comment_data">2014</span></p>
+        </div>
+    </script>
+    <script type="text/javascript">
+        function createCol() {
+            var html = $("#tempCol")[0].innerHTML
+            var para = document.createElement("div")
+            para.innerHTML = html
+            var x = $(".comment")
+            x[0].appendChild(para)
+        }
+    </script>
+
     //异步加载评论
     <script>
         function loadAjax() {
             var jsonAjax
+            var comment = $("#comment_input")[0].value
+            var playAddress = GetQueryString("playAddress")
             if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
                 jsonAjax = new XMLHttpRequest()
             }
@@ -43,13 +68,23 @@
             jsonAjax.onreadystatechange = function () {
                 if (jsonAjax.readyState == 4 && jsonAjax.status == 200) {
 
-                    alert(z)
-                    z[0].textContent = jsonAjax.responseText
+                    var responseJson = JSON.parse(jsonAjax.responseText)
+                    var comment_num = responseJson.data.length
+                    for (var i = 0; i < comment_num - 1; i++)
+                        createCol()
+                    var comment_nickname = $(".comment_nickname")
+                    var comment_show = $(".comment_show")
+                    var comment_data = $(".comment_data")
+                    for (var i = 0; i < comment_num; i++) {
+                        comment_nickname[i].textContent = responseJson.data[i].username
+                        comment_show[i].textContent = responseJson.data[i].comment
+                        comment_data[i].textContent = responseJson.data[i].data
+                    }
                 }
             }
-
-            jsonAjax.open("GET", "", true);
-            jsonAjax.send();
+            var url = "/add_comment" + "?playAddress=" + playAddress + "&comment=" + comment
+            jsonAjax.open("GET", url, true)
+            jsonAjax.send()
         }
     </script>
 </head>
@@ -107,13 +142,12 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-1">
-    </div>
+    <div class="col-md-1"></div>
     <div class="col-md-10">
         <p style="font-size:30px; ">用户评论：</p>
-        <div class="media">
+        <div class="comment">
             <div class="media-left">
-                <a href="个人信息">
+                <a href="#">
                     <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" width="100"
                          height="100">
                 </a>
@@ -141,12 +175,9 @@
                             <input id="comment_input" style="width: 300%" type="text" class="form-control" name="sousuo" placeholder="">
                             <button onclick="loadAjax()" type="submit" class="btn btn-default">发表</button>
                         </div>
-
                 </div><!--/.nav-collapse -->
             </div>
-        </nav>
-    </div>
-    <div class="col-md-1">
+        </div><!--/.nav-collapse -->
     </div>
 </div>
 

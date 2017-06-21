@@ -160,6 +160,8 @@ def add_comment():
     username = current_user.username
     comment = request.args.get('comment')
     CommentManagement.add_comment(username, video_link, comment)
+    return CommentManagement.get_comment(video_link)
+
 
 @main.route('/get_comment')
 def get_comment():

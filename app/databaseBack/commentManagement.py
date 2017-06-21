@@ -33,10 +33,10 @@ class CommentManagement(object):
         :param video_link 视频链接
         :return: 对应视频的所有评论
         '''
-        video_link_id = VideoLink.query.filtry_by(link=video_link).first().id
-        comments = Comment.query.filter_by(Uid = video_link_id).all()
+        video_link_id = VideoLink.query.filter_by(link=video_link).first().id
+        comments = Comment.query.filter_by(Uid=video_link_id).all()
         all_data = []
-        for comment in comments:
+        for comment in comments[:10]:
             data = {}
             user_id = comment.Uno
             username = UserManagement.get_user_name(user_id)
@@ -44,8 +44,8 @@ class CommentManagement(object):
             data['comment'] = comment.comment_text
             data['date'] = comment.Hdate
             all_data.append(data)
-
-        return json.dumps(all_data, ensure_ascii=False)
+        comment_json = {"data": all_data}
+        return json.dumps(comment_json, ensure_ascii=False, default=UserManagement.default1)
 
     @classmethod
     def add_comment(cls, username, video_link, comment):
@@ -57,8 +57,8 @@ class CommentManagement(object):
         :return: 无
         '''
         user_id = UserManagement.get_user_id(username)
-        video_link_id = VideoLink.query.filtry_by(link = video_link).first().id
-        new_comment = Comment(Uno = user_id, Uid = video_link_id, comment_text = comment)
+        video_link_id = VideoLink.query.filter_by(link=video_link).first().id
+        new_comment = Comment(Uno=user_id, Uid=video_link_id, comment_text=comment)
         db.session.add(new_comment)
         db.session.commit()
 
@@ -71,6 +71,7 @@ class CommentManagement(object):
         :return: 无
         '''
         user_id = UserManagement.get_user_id(username)
-        video_link_id = VideoLink.query.filtry_by(link = video_link).first().id
-        db.session.query(Comment).filter(Comment.Uid==video_link_id, Comment.Uno==user_id, Comment.Hdate==comment_time).delete()
+        video_link_id = VideoLink.query.filtry_by(link=video_link).first().id
+        db.session.query(Comment).filter(Comment.Uid == video_link_id, Comment.Uno == user_id,
+                                         Comment.Hdate == comment_time).delete()
         db.session.commit()
