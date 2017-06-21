@@ -63,7 +63,7 @@ class CommentManagement(object):
         db.session.commit()
 
     @classmethod
-    def delete_commit(cls, username, video_link):
+    def delete_commit(cls, username, video_link, comment_time):
         '''
         删除某人对视频的评论
         :param username: 用户名
@@ -72,5 +72,5 @@ class CommentManagement(object):
         '''
         user_id = UserManagement.get_user_id(username)
         video_link_id = VideoLink.query.filtry_by(link = video_link).first().id
-        db.session.query(Comment).filter(Comment.Uid==video_link_id, Comment.Uno==user_id).delete()
+        db.session.query(Comment).filter(Comment.Uid==video_link_id, Comment.Uno==user_id, Comment.Hdate==comment_time).delete()
         db.session.commit()
