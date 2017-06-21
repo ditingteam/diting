@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>播放</title>
     <!-- Bootstrap -->
@@ -14,7 +12,6 @@
     //加载视频链接
     <script>
         $(document).ready(function () {
-
             //获取地址栏传送的地址
             function GetQueryString(name) {
                 var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -22,11 +19,33 @@
                 if (r != null)return unescape(r[2]);
                 return null;
             }
-
             //根据获取的地址播放
             var sr = $("iframe")
             sr[0].src = GetQueryString("playAddress")
         })
+    </script>
+    //异步加载评论
+    <script>
+        function loadAjax() {
+            var jsonAjax
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                jsonAjax = new XMLHttpRequest()
+            }
+            else {// code for IE6, IE5
+                jsonAjax = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            jsonAjax.onreadystatechange = function () {
+                if (jsonAjax.readyState == 4 && jsonAjax.status == 200) {
+                    var z=$(".media-body")
+                    alert(z)
+                    z[0].textContent = jsonAjax.responseText
+                }
+            }
+            var x=$("#comment")
+            var url="/get_comment"+"?"
+            jsonAjax.open("GET", "", true);
+            jsonAjax.send();
+        }
     </script>
 </head>
 
@@ -42,7 +61,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/index">主页</a></li>
             </ul>
-            <form class="navbar-form navbar-left ">
+            <form class="navbar-form navbar-left " action="/search">
                 <div class="form-group">
                     <input type="text" class="form-control" name="sousuo" placeholder="楚乔传">
                 </div>
@@ -86,54 +105,52 @@
     </div>
     <div class="col-md-10">
         <p style="font-size:30px; ">用户评论：</p>
-        <div id="loadAjax">
-            <div class="media">
-                <div class="media-left">
-                    <a href="个人信息">
-                        <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" width="100"
-                             height="100">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">昵称</h4>
-                    这AV拍的还可以，男女主表情丰富、动作到位，配音还很好听，我给5分！
-                </div>
+        <div class="media">
+            <div class="media-left">
+                <a href="个人信息">
+                    <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" width="100"
+                         height="100">
+                </a>
             </div>
-            <div class="media">
-                <div class="media-left">
-                    <a href="个人信息">
-                        <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" width="100"
-                             height="100">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">昵称</h4>
-                    这AV拍的还可以，男女主表情丰富、动作到位，配音还很好听，我给5分！
-                </div>
+            <div class="media-body">
+                <h4 class="media-heading">昵称</h4>
+                这AV拍的还可以，男女主表情丰富、动作到位，配音还很好听，我给5分！
             </div>
-            <div class="media">
-                <div class="media-left">
-                    <a href="个人信息">
-                        <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" width="100"
-                             height="100">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">昵称</h4>
-                    这AV拍的还可以，男女主表情丰富、动作到位，配音还很好听，我给5分！
-                </div>
+        </div>
+        <div class="media">
+            <div class="media-left">
+                <a href="个人信息">
+                    <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" width="100"
+                         height="100">
+                </a>
             </div>
-            <div class="media">
-                <div class="media-left">
-                    <a href="个人信息">
-                        <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" width="100"
-                             height="100">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">昵称</h4>
-                    这AV拍的还可以，男女主表情丰富、动作到位，配音还很好听，我给5分！
-                </div>
+            <div class="media-body">
+                <h4 class="media-heading">昵称</h4>
+                这AV拍的还可以，男女主表情丰富、动作到位，配音还很好听，我给5分！
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left">
+                <a href="个人信息">
+                    <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" width="100"
+                         height="100">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">昵称</h4>
+                这AV拍的还可以，男女主表情丰富、动作到位，配音还很好听，我给5分！
+            </div>
+        </div>
+        <div class="media">
+            <div class="media-left">
+                <a href="个人信息">
+                    <img class="img-circle" src="https://static.youku.com/user/img/avatar/310/41.jpg" width="100"
+                         height="100">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">昵称</h4>
+                这AV拍的还可以，男女主表情丰富、动作到位，配音还很好听，我给5分！
             </div>
         </div>
         <nav class="navbar navbar-default navbar-static-top">
@@ -151,8 +168,8 @@
                     <p><h4>发表评论：</h4></p>
                     <form class="navbar-form navbar-left ">
                         <div class="form-group">
-                            <input style="width: 300%" type="text" class="form-control" name="search" placeholder="">
-                            <button type="submit" class="btn btn-default" >发表</button>
+                            <input  style="width: 300%" type="text" class="form-control" name="sousuo" placeholder="">
+                            <button type="submit" class="btn btn-default">发表</button>
                         </div>
 
                     </form>
