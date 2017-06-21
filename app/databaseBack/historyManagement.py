@@ -69,5 +69,6 @@ class HistoryManagement(object):
         user_history = History.query.order_by(History.Hdate).filter_by(Uno=user_id).all()
         history_all_data = []
         for history in user_history[:10]:
+            print history.Uid
             history_all_data.append(VideoManagement.get_video_name(history.Uid))
         return json.dumps(history_all_data, ensure_ascii=False)

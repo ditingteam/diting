@@ -13,6 +13,25 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script>
     </script>
+        <script>
+        function validate() {
+
+            var pwd = $("#newPassword").val();
+            var pwd1 = $("#newPasswordAgain").val();
+            <!-- 对比两次输入的密码 -->
+            if(pwd == pwd1)
+            {
+                $("#tishi").html("");
+                $("#tishi").css("color","green");
+                $("button").removeAttr("disabled");
+            }
+            else {
+                $("#tishi").html("两次密码不相同");
+                $("#tishi").css("color","red")
+                $("button").attr("disabled","disabled");
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -58,7 +77,8 @@
     <div class="form-group required">
         <label for="inputPassword3" class="col-sm-3 control-label">请确认密码</label>
         <div class="col-sm-5">
-            <input type="password" class="form-control" id="newPasswordAgain" name="mima1" placeholder="Password Again">
+        <input type="password" class="form-control" id="newPasswordAgain" name="mima1" placeholder="Password Again" onkeyup="validate()">
+            <span id="tishi">
         </div>
     </div>
     <div class="col-sm-offset-3 col-sm-5">
