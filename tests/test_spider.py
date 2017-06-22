@@ -19,7 +19,7 @@ class SpiderTestcase(unittest.TestCase):
 
 
     def test_search(self):
-        self.assertTrue(len(self.myspider.search(key_word='智障'.decode('utf-8')))== 0)
+        self.assertTrue(len(self.myspider.search(key_word='智障'))== 0)
 
     def test_rank(self):
         self.assertIsNotNone(self.myspider.Rank())

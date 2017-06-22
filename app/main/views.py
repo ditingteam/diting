@@ -85,7 +85,7 @@ def change_password():
     if request.method == 'GET':
         return main.send_static_file('change_passwd.html')
     username = current_user.username
-    old_password = request.form.get('old_password')
+    old_password = request.form.get('oldPassword')
     new_password = request.form.get('new_password')
     new_password1 = request.form.get('mima1')
     if new_password != new_password1:

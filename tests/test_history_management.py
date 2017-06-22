@@ -17,6 +17,6 @@ class HistoryManagementTest(unittest.TestCase):
 
     def test_a_get_history(self):
         user_id = User.query.filter_by(username='xiaochao').first().id
-        video_link_id = VideoLink.query.filter_by(link='http://player.youku.com/player.php/sid/XMjY3NzU2MTA2MA==/v.swf').first().id
+        video_link_id = VideoLink.query.filter_by(link='http://player.youku.com/player.php/sid/XMjgwNjcxMzU3Ng==/v.swf').first().id
         self.assertIsNotNone(HistoryManagement.get_history(user_id, video_link_id))
 

@@ -15,7 +15,7 @@ class UsermanagementTest(unittest.TestCase):
 
     def test_b_login(self):
 
-        self.assertIsNotNone(UserManagement.login('xiaochao', 's111111'))
+        self.assertIsNotNone(UserManagement.login('xiaochao', 'a000000'))
 
     def test_c_has_user(self):
         self.assertTrue(UserManagement.has_user('xiaochao'))
@@ -25,9 +25,9 @@ class UsermanagementTest(unittest.TestCase):
         self.assertIsNotNone(UserManagement.get_user('xiaochao'))
 
     def test_e_change_password(self):
-        self.assertTrue(UserManagement.change_password('xiaochao', 's111111','a000000'))
-        self.assertIsNone(UserManagement.login('xiaochao', 's111111'))
-        self.assertIsNotNone(UserManagement.login('xiaochao', 'a000000'))
+        self.assertTrue(UserManagement.change_password('xiaochao', 'a000000','a111111'))
+        self.assertIsNone(UserManagement.login('xiaochao', 'a000000'))
+        self.assertIsNotNone(UserManagement.login('xiaochao', 'a111111'))
 
     def test_f_get_information(self):
         self.assertIsNotNone(UserManagement.get_information('xiaochao'))
