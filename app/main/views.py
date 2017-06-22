@@ -63,7 +63,7 @@ def register():
     if UserManagement.has_user(username):
         return main.send_static_file('register.html')
     if UserManagement.register(username, password):
-        print username, password
+        print (username, password)
         return redirect(url_for('main.login'))
 
 
@@ -87,7 +87,7 @@ def change_password():
     username = current_user.username
     old_password = request.form.get('old_password')
     new_password = request.form.get('new_password')
-    new_password1 = request.form.get('new_password1')
+    new_password1 = request.form.get('mima1')
     if new_password != new_password1:
         return main.send_static_file('change_passwd.html')
     elif UserManagement.change_password(current_user.username, old_password, new_password):
@@ -113,7 +113,7 @@ def compile_information():
         sex = True if sex_data == 'male' else False
         UserManagement.change_information(current_user.username, nickname, sex, p_sign,
                                           birth, phone, email, address, introduce)
-        print 'change!',nickname
+        print ('change!',nickname)
         return redirect(url_for('main.index'))
 
 
@@ -148,7 +148,7 @@ def video_play_homepage():
 def video_play():
     if current_user.is_authenticated:
         video_link = request.args.get('playAddress')
-        print "add"
+        print ("add")
         HistoryManagement.add_history(current_user.username, video_link)
         return main.send_static_file('play_video_after_login.html')
     else:

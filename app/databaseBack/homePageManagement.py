@@ -5,6 +5,7 @@ import json
 
 
 class HomePageManagement(object):
+    data = None
     @staticmethod
     def init_homepage():
         '''
@@ -84,6 +85,11 @@ class HomePageManagement(object):
         获取首页数据
         :return:
         '''
+        try:
+            if HomePageManagement.dada is not None:
+                return HomePageManagement.dada
+        except Exception:
+            pass
         data = {}
         super_drama_all_data = SuperDrama.query.all()
         super_dramer_list = []
@@ -145,7 +151,8 @@ class HomePageManagement(object):
         data[u'热剧榜单'] = hot_list_list
         data[u'新剧预告'] = new_drama_trailer_list
         data[u'独家视频官网'] = exclusive_video_website_list
-        return json.dumps(data, ensure_ascii=False)
+        HomePageManagement.dada = json.dumps(data, ensure_ascii=False)
+        return HomePageManagement.dada
 
     @staticmethod
     def upgrade():
