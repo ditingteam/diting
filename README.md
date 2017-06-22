@@ -1,15 +1,14 @@
 # diting
-#谛听视频网站
-
--应用框架：
+#谛听视频网站</br>
+</br>应用框架：
 -    flask
--数据库：
+</br>数据库：
 -    SQLAlchemy 
--开发语言：
+</br>开发语言：
 -    Python、Html、JavaScript
--应用技术：
+</br>应用技术：
 -    jQuery、Ajax、Bootstrap模板（css）、爬虫技术
--开发环境：
+</br>开发环境：
 -    PyCharm（python 2.7.13）
 -    SQL server2015
     
