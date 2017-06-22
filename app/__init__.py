@@ -1,7 +1,6 @@
 # -*- coding: utf8 -*-
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
-from flask_mail import Mail
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -14,7 +13,7 @@ login_manager = LoginManager()
 # 地址和浏览器的用户代理信息，如果发现异动就登出用户。
 login_manager.session_protection = 'strong'
 # login_view 属性设置登录页面的端点,也就是auth/views.py中的路由
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'main.login'
 
 bootstrap = Bootstrap()
 moment = Moment()
@@ -30,11 +29,11 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
 
-    #导入蓝本的路由之类的信息
+    # 导入蓝本的路由之类的信息
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
     from .user import user as user_blueprint
-    app.register_blueprint(user_blueprint, url_prefix = '/user')
+    app.register_blueprint(user_blueprint, url_prefix='/user')
 
     return app
