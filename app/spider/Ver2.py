@@ -92,10 +92,7 @@ class spider(object):
         :return:
         '''
         base_url = u'http://www.soku.com/search_video/q_'
-        try:
-            key_word.decode('utf-8')
-        except :
-            pass
+
         search_url = base_url + key_word
         soup = self.get_soup(url=search_url)
         posters = soup.select('div.s_poster')  # img,info,href
@@ -190,7 +187,6 @@ class spider(object):
         Exclusive_video_website_list = list()
         items = soup.select('div#m_86804 script')
         str=items[1].text
-        print str
         for i in range(len(str)):
            if t==1:
                str1=str1+str[i]
@@ -199,7 +195,6 @@ class spider(object):
                str1=str1+str[i]
            if str[i]==']':
                t=0
-        print str1
 
     def get_data(self):
         data = {}
@@ -220,6 +215,4 @@ if __name__ == '__main__':
     #print json.dumps(a.search(key.decode('utf-8')), ensure_ascii=False)
     print(a.exclusive_planning())
     data = a.search(key)
-    print len(data[0].get('links'))
-    print json.dumps(data, ensure_ascii=False)
 

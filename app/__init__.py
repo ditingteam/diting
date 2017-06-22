@@ -30,10 +30,8 @@ def create_app(config_name):
     login_manager.init_app(app)
 
     # 导入蓝本的路由之类的信息
-    from .main import main as main_blueprint
+    from app.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
-    from .user import user as user_blueprint
-    app.register_blueprint(user_blueprint, url_prefix='/user')
 
     return app
