@@ -15,16 +15,15 @@
 
 开发环境：
 -    PyCharm（python 2.7.13）
--    SQL server2015
+-    mysql
     
 项目结构：
 - ./app 存放后台程序
 - __init__.py 初始化脚本
 - ./app/dataBaseBack 后台数据库管理
-- ./app/main 存放html js css文件
+- ./app/main/static 存放html js css文件
+- ./app/main/views.py 跳转管理（路由）
 - ./app/spider 爬虫模块
-- ./user  用户有关部分页面
-- ./app/static 模板文件
 - ./tests 测试文件
 - config.py 网站初始化数据，例如数据库连接用到的用户名密码之类的设置
 - manage.py 运行网站的脚本
@@ -38,4 +37,4 @@
 </br>正常运行-> runserver
 </br>运行测试-> test
 </br>创建数据库 db init 创建迁移 db migrate -m "更新信息"  更新数据库 db upgrade
-</br>run->edit config... 在里面把这些命令打进去就好了
+</br>自行在环境变量添加
