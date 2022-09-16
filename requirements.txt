@@ -40,7 +40,7 @@ itsdangerous==0.24
 Jinja2==2.9.6
 lazy-object-proxy==1.2.2
 lxml==3.7.3
-Mako==1.0.6
+Mako==1.2.2
 markup==0.2
 MarkupSafe==1.0
 MarkupSafe-slow==1.0
