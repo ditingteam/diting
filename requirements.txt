@@ -70,7 +70,7 @@ shellescape==3.4.1
 singledispatch==3.4.0.3
 six==1.10.0
 SQLAlchemy==1.1.9
-Twisted==17.1.0
+Twisted==22.10.0
 urllib3==1.21.1
 utils==0.9.0
 visitor==0.1.3
